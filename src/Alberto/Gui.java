@@ -15,6 +15,9 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JList;
+import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
 public class Gui extends JFrame {
 
@@ -50,15 +53,15 @@ public class Gui extends JFrame {
 		setBackground(Color.WHITE);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 480, 492);
+		setBounds(100, 100, 794, 783);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
 		JLabel lblPathRulescf = new JLabel("Path rules.cf");
@@ -80,8 +83,8 @@ public class Gui extends JFrame {
 		
 		JCheckBox checkBox = new JCheckBox("");
 		GridBagConstraints gbc_checkBox = new GridBagConstraints();
-		gbc_checkBox.insets = new Insets(0, 0, 5, 0);
-		gbc_checkBox.gridx = 4;
+		gbc_checkBox.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBox.gridx = 6;
 		gbc_checkBox.gridy = 1;
 		contentPane.add(checkBox, gbc_checkBox);
 		
@@ -104,8 +107,8 @@ public class Gui extends JFrame {
 		
 		JCheckBox checkBox_1 = new JCheckBox("");
 		GridBagConstraints gbc_checkBox_1 = new GridBagConstraints();
-		gbc_checkBox_1.insets = new Insets(0, 0, 5, 0);
-		gbc_checkBox_1.gridx = 4;
+		gbc_checkBox_1.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBox_1.gridx = 6;
 		gbc_checkBox_1.gridy = 2;
 		contentPane.add(checkBox_1, gbc_checkBox_1);
 		
@@ -128,129 +131,133 @@ public class Gui extends JFrame {
 		
 		JCheckBox checkBox_2 = new JCheckBox("");
 		GridBagConstraints gbc_checkBox_2 = new GridBagConstraints();
-		gbc_checkBox_2.insets = new Insets(0, 0, 5, 0);
-		gbc_checkBox_2.gridx = 4;
+		gbc_checkBox_2.insets = new Insets(0, 0, 5, 5);
+		gbc_checkBox_2.gridx = 6;
 		gbc_checkBox_2.gridy = 3;
 		contentPane.add(checkBox_2, gbc_checkBox_2);
 
 		
 		//---------------------------------------------- CONFIG. MANUAL ----------------------------------------------
 		
-		JLabel lblconfigManual = new JLabel("_________________________CONFIG. MANUAL_________________________");
+		JLabel lblconfigManual = new JLabel("________________________________________________________CONFIG. MANUAL____________________________________________________________________");
 		GridBagConstraints gbc_lblconfigManual = new GridBagConstraints();
-		gbc_lblconfigManual.gridwidth = 5;
-		gbc_lblconfigManual.insets = new Insets(0, 0, 5, 0);
+		gbc_lblconfigManual.gridwidth = 7;
+		gbc_lblconfigManual.insets = new Insets(0, 0, 5, 5);
 		gbc_lblconfigManual.gridx = 0;
 		gbc_lblconfigManual.gridy = 4;
 		contentPane.add(lblconfigManual, gbc_lblconfigManual);
-		
-		JComboBox comboBox = new JComboBox();
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 2;
-		gbc_comboBox.gridy = 5;
-		contentPane.add(comboBox, gbc_comboBox);
-		
-		JButton btnAvaliar = new JButton("Avaliar Qualidade Config.");
-		btnAvaliar.setFont(new Font("Courier New", Font.BOLD, 13));
-		GridBagConstraints gbc_btnAvaliar = new GridBagConstraints();
-		gbc_btnAvaliar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnAvaliar.gridx = 3;
-		gbc_btnAvaliar.gridy = 5;
-		contentPane.add(btnAvaliar, gbc_btnAvaliar);
-		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setEditable(true);
-		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
-		gbc_comboBox_1.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_1.gridx = 2;
-		gbc_comboBox_1.gridy = 6;
-		contentPane.add(comboBox_1, gbc_comboBox_1);
-		
-		JButton btnGravar = new JButton("Gravar Config.");
-		btnGravar.setFont(new Font("Courier New", Font.BOLD, 13));
-		GridBagConstraints gbc_btnGravar = new GridBagConstraints();
-		gbc_btnGravar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGravar.gridx = 3;
-		gbc_btnGravar.gridy = 6;
-		contentPane.add(btnGravar, gbc_btnGravar);
-		
-		JLabel lblFalsosPositivos = new JLabel("Falsos Positivos");
-		lblFalsosPositivos.setForeground(new Color(0, 128, 0));
-		lblFalsosPositivos.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		GridBagConstraints gbc_lblFalsosPositivos = new GridBagConstraints();
-		gbc_lblFalsosPositivos.anchor = GridBagConstraints.EAST;
-		gbc_lblFalsosPositivos.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFalsosPositivos.gridx = 2;
-		gbc_lblFalsosPositivos.gridy = 7;
-		contentPane.add(lblFalsosPositivos, gbc_lblFalsosPositivos);
-		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 3;
-		gbc_textField_3.gridy = 7;
-		contentPane.add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
-		
-		JLabel lblFalsosNegativos = new JLabel("Falsos Negativos");
-		lblFalsosNegativos.setForeground(Color.RED);
-		lblFalsosNegativos.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-		GridBagConstraints gbc_lblFalsosNegativos = new GridBagConstraints();
-		gbc_lblFalsosNegativos.anchor = GridBagConstraints.EAST;
-		gbc_lblFalsosNegativos.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFalsosNegativos.gridx = 2;
-		gbc_lblFalsosNegativos.gridy = 8;
-		contentPane.add(lblFalsosNegativos, gbc_lblFalsosNegativos);
-		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 3;
-		gbc_textField_4.gridy = 8;
-		contentPane.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
-		
-		
-		//---------------------------------------------- CONFIG. AUTO ----------------------------------------------
-		
-		JLabel lblNewLabel = new JLabel("_________________________CONFIG. AUTO_________________________");
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.gridwidth = 5;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 9;
-		contentPane.add(lblNewLabel, gbc_lblNewLabel);
-
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setEditable(true);
-		GridBagConstraints gbc_comboBox_2 = new GridBagConstraints();
-		gbc_comboBox_2.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_2.gridx = 2;
-		gbc_comboBox_2.gridy = 11;
-		contentPane.add(comboBox_2, gbc_comboBox_2);
+				
+				JList list = new JList();
+				GridBagConstraints gbc_list = new GridBagConstraints();
+				gbc_list.gridheight = 4;
+				gbc_list.insets = new Insets(0, 0, 5, 5);
+				gbc_list.fill = GridBagConstraints.BOTH;
+				gbc_list.gridx = 2;
+				gbc_list.gridy = 6;
+				contentPane.add(list, gbc_list);
+				
+				JTextArea textArea = new JTextArea();
+				GridBagConstraints gbc_textArea = new GridBagConstraints();
+				gbc_textArea.gridwidth = 3;
+				gbc_textArea.gridheight = 4;
+				gbc_textArea.insets = new Insets(0, 0, 5, 5);
+				gbc_textArea.fill = GridBagConstraints.BOTH;
+				gbc_textArea.gridx = 3;
+				gbc_textArea.gridy = 6;
+				contentPane.add(textArea, gbc_textArea);
+				
+				JButton btnAvaliar = new JButton("Avaliar Qualidade Config.");
+				btnAvaliar.setFont(new Font("Courier New", Font.BOLD, 13));
+				GridBagConstraints gbc_btnAvaliar = new GridBagConstraints();
+				gbc_btnAvaliar.insets = new Insets(0, 0, 5, 5);
+				gbc_btnAvaliar.gridx = 6;
+				gbc_btnAvaliar.gridy = 7;
+				contentPane.add(btnAvaliar, gbc_btnAvaliar);
+				
+				JButton btnGravar = new JButton("Gravar Config.");
+				btnGravar.setFont(new Font("Courier New", Font.BOLD, 13));
+				GridBagConstraints gbc_btnGravar = new GridBagConstraints();
+				gbc_btnGravar.insets = new Insets(0, 0, 5, 5);
+				gbc_btnGravar.gridx = 6;
+				gbc_btnGravar.gridy = 8;
+				contentPane.add(btnGravar, gbc_btnGravar);
+				
+				JLabel lblFalsosPositivos = new JLabel("Falsos Positivos");
+				lblFalsosPositivos.setForeground(new Color(0, 128, 0));
+				lblFalsosPositivos.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+				GridBagConstraints gbc_lblFalsosPositivos = new GridBagConstraints();
+				gbc_lblFalsosPositivos.anchor = GridBagConstraints.EAST;
+				gbc_lblFalsosPositivos.insets = new Insets(0, 0, 5, 5);
+				gbc_lblFalsosPositivos.gridx = 2;
+				gbc_lblFalsosPositivos.gridy = 11;
+				contentPane.add(lblFalsosPositivos, gbc_lblFalsosPositivos);
+				
+				textField_3 = new JTextField();
+				textField_3.setEditable(false);
+				GridBagConstraints gbc_textField_3 = new GridBagConstraints();
+				gbc_textField_3.gridwidth = 3;
+				gbc_textField_3.insets = new Insets(0, 0, 5, 5);
+				gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
+				gbc_textField_3.gridx = 3;
+				gbc_textField_3.gridy = 11;
+				contentPane.add(textField_3, gbc_textField_3);
+				textField_3.setColumns(10);
+				
+				JLabel lblFalsosNegativos = new JLabel("Falsos Negativos");
+				lblFalsosNegativos.setForeground(Color.RED);
+				lblFalsosNegativos.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
+				GridBagConstraints gbc_lblFalsosNegativos = new GridBagConstraints();
+				gbc_lblFalsosNegativos.anchor = GridBagConstraints.EAST;
+				gbc_lblFalsosNegativos.insets = new Insets(0, 0, 5, 5);
+				gbc_lblFalsosNegativos.gridx = 2;
+				gbc_lblFalsosNegativos.gridy = 12;
+				contentPane.add(lblFalsosNegativos, gbc_lblFalsosNegativos);
+				
+				textField_4 = new JTextField();
+				textField_4.setEditable(false);
+				GridBagConstraints gbc_textField_4 = new GridBagConstraints();
+				gbc_textField_4.gridwidth = 3;
+				gbc_textField_4.insets = new Insets(0, 0, 5, 5);
+				gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
+				gbc_textField_4.gridx = 3;
+				gbc_textField_4.gridy = 12;
+				contentPane.add(textField_4, gbc_textField_4);
+				textField_4.setColumns(10);
+				
+				
+				//---------------------------------------------- CONFIG. AUTO ----------------------------------------------
+				
+				JLabel lblNewLabel = new JLabel("________________________________________________________CONFIG. AUTO____________________________________________________________________");
+				GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+				gbc_lblNewLabel.gridwidth = 13;
+				gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
+				gbc_lblNewLabel.gridx = 1;
+				gbc_lblNewLabel.gridy = 14;
+				contentPane.add(lblNewLabel, gbc_lblNewLabel);
+				
+				JList list_1 = new JList();
+				GridBagConstraints gbc_list_1 = new GridBagConstraints();
+				gbc_list_1.gridheight = 5;
+				gbc_list_1.insets = new Insets(0, 0, 5, 5);
+				gbc_list_1.fill = GridBagConstraints.BOTH;
+				gbc_list_1.gridx = 2;
+				gbc_list_1.gridy = 16;
+				contentPane.add(list_1, gbc_list_1);
 		
 		JButton btnGerarConfigurao = new JButton("Gerar Configuração");
 		btnGerarConfigurao.setFont(new Font("Courier New", Font.BOLD, 13));
 		GridBagConstraints gbc_btnGerarConfigurao = new GridBagConstraints();
 		gbc_btnGerarConfigurao.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGerarConfigurao.gridx = 3;
-		gbc_btnGerarConfigurao.gridy = 11;
+		gbc_btnGerarConfigurao.gridx = 4;
+		gbc_btnGerarConfigurao.gridy = 18;
 		contentPane.add(btnGerarConfigurao, gbc_btnGerarConfigurao);
 		
 		JButton btnGravar_1 = new JButton("Gravar");
 		btnGravar_1.setFont(new Font("Courier New", Font.BOLD, 13));
 		GridBagConstraints gbc_btnGravar_1 = new GridBagConstraints();
 		gbc_btnGravar_1.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGravar_1.gridx = 3;
-		gbc_btnGravar_1.gridy = 12;
+		gbc_btnGravar_1.gridx = 4;
+		gbc_btnGravar_1.gridy = 19;
 		contentPane.add(btnGravar_1, gbc_btnGravar_1);
 		
 		JLabel lblFalsosPositivos_1 = new JLabel("Falsos Positivos");
@@ -260,16 +267,17 @@ public class Gui extends JFrame {
 		gbc_lblFalsosPositivos_1.anchor = GridBagConstraints.EAST;
 		gbc_lblFalsosPositivos_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFalsosPositivos_1.gridx = 2;
-		gbc_lblFalsosPositivos_1.gridy = 13;
+		gbc_lblFalsosPositivos_1.gridy = 23;
 		contentPane.add(lblFalsosPositivos_1, gbc_lblFalsosPositivos_1);
 		
 		textField_5 = new JTextField();
 		textField_5.setEditable(false);
 		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
+		gbc_textField_5.gridwidth = 3;
 		gbc_textField_5.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_5.gridx = 3;
-		gbc_textField_5.gridy = 13;
+		gbc_textField_5.gridy = 23;
 		contentPane.add(textField_5, gbc_textField_5);
 		textField_5.setColumns(10);
 		
@@ -278,18 +286,19 @@ public class Gui extends JFrame {
 		lblFalsosNegativos_1.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 		GridBagConstraints gbc_lblFalsosNegativos_1 = new GridBagConstraints();
 		gbc_lblFalsosNegativos_1.anchor = GridBagConstraints.EAST;
-		gbc_lblFalsosNegativos_1.insets = new Insets(0, 0, 0, 5);
+		gbc_lblFalsosNegativos_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFalsosNegativos_1.gridx = 2;
-		gbc_lblFalsosNegativos_1.gridy = 14;
+		gbc_lblFalsosNegativos_1.gridy = 24;
 		contentPane.add(lblFalsosNegativos_1, gbc_lblFalsosNegativos_1);
 		
 		textField_6 = new JTextField();
 		textField_6.setEditable(false);
 		GridBagConstraints gbc_textField_6 = new GridBagConstraints();
-		gbc_textField_6.insets = new Insets(0, 0, 0, 5);
+		gbc_textField_6.gridwidth = 3;
+		gbc_textField_6.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_6.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_6.gridx = 3;
-		gbc_textField_6.gridy = 14;
+		gbc_textField_6.gridy = 24;
 		contentPane.add(textField_6, gbc_textField_6);
 		textField_6.setColumns(10);
 	}
