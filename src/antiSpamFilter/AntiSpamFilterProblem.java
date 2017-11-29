@@ -55,11 +55,13 @@ public class AntiSpamFilterProblem extends AbstractDoubleProblem {
 		Avaliador a = new Avaliador();
 		
 		ArrayList<String[]> fileReport = new File_Scanner().Scan_Spam_Ham("ham.log.txt");
-		a.replaceFields(rules, fileReport, false);		
+		a.replaceFields(rules, fileReport, false);
+		//fp
 		fx[0] = a.avaliar();
 		
 		fileReport = new File_Scanner().Scan_Spam_Ham("spam.log.txt");
 		a.replaceFields(rules, fileReport, true);
+		//fn
 		fx[1] = a.avaliar();
 		
 		solution.setObjective(0, fx[0]);

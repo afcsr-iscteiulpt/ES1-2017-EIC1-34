@@ -21,7 +21,7 @@ public class Avaliador {
 	}
 
 	/**
-	 * Substitui os parâmetros para novas avaliações
+	 * Substitui os parametros para novas avaliacoes
 	 * @param weigth
 	 * @param fileReport
 	 * @param spam
@@ -34,7 +34,7 @@ public class Avaliador {
 
 
 	/**
-	 * Este método avalia os falsos positivos e falsos negativos conforme se está a avaliar spam ou não
+	 * Este metodo avalia os falsos positivos e falsos negativos conforme se esta a avaliar spam ou nao
 	 * 
 	 * retorna negative se esta a avaliar spam
 	 * retorna positive se esta a avaliar ham
