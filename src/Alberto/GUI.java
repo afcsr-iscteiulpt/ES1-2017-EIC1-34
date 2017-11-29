@@ -2,9 +2,11 @@ package Alberto;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.ScrollPane;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
@@ -86,6 +88,8 @@ public class GUI{
 		
 		model1 = new DefaultListModel<>();
 		list1 = new JList<>(model1);
+		JScrollPane spL1= new JScrollPane(list1);
+		frame.add(spL1);
 		
 		list1.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
 		
@@ -116,7 +120,8 @@ public class GUI{
 		model2 = new DefaultListModel<>();
 		list2 = new JList<>(model2);
 		list2.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
-		
+		JScrollPane spL2= new JScrollPane(list2);
+		frame.add(spL2);
 		JButton gerarConfigAUTO = new JButton("Gerar Configuração");
 		
 		JButton gravarConfigAUTO = new JButton("Gravar Configuração");
