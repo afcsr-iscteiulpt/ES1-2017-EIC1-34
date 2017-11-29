@@ -21,6 +21,7 @@ import javax.swing.JButton;
 
 public class GUI2 extends JFrame {
 
+
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
