@@ -6,15 +6,25 @@ import java.util.List;
 import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.DoubleSolution;
 
-public class AntiSpamFilterProblem extends AbstractDoubleProblem {
+import Bruno.File_Scanner;
+import Bruno.Rule;
+import Daniel.Avaliador;
 
+public class AntiSpamFilterProblem extends AbstractDoubleProblem {
+	
+	private ArrayList<Rule> rules = new ArrayList<Rule>();;
+	
 	public AntiSpamFilterProblem() {
 		// 10 variables (anti-spam filter rules) by default 
 		this(10);
 	}
 
+	@SuppressWarnings({ "unchecked", "static-access" })
 	public AntiSpamFilterProblem(Integer numberOfVariables) {
-		setNumberOfVariables(numberOfVariables);
+		
+		rules = new File_Scanner().Scan_Rules_cf("rules.cf");
+		setNumberOfVariables(rules.size());
+		
 		setNumberOfObjectives(2);
 		setName("AntiSpamFilterProblem");
 
@@ -30,29 +40,28 @@ public class AntiSpamFilterProblem extends AbstractDoubleProblem {
 		setUpperLimit(upperLimit);
 	}
 
+	@SuppressWarnings({ "unchecked", "static-access" })
 	public void evaluate(DoubleSolution solution){
-		double aux, xi, xj;
-
+		
 		double[] fx = new double[getNumberOfObjectives()];
-		double[] x = new double[getNumberOfVariables()];
-
+		
+		//preenche os pessos da lista
+		rules = new ArrayList<Rule>();
 		for (int i = 0; i < solution.getNumberOfVariables(); i++) {
-			x[i] = solution.getVariableValue(i) ;
+			rules.get(i).setValor(solution.getVariableValue(i));
 		}
-
-
-		fx[0] = 0.0;
-		for (int var = 0; var < solution.getNumberOfVariables() - 1; var++) {
-			//falsos positivos
-			fx[0] += Math.abs(x[0]); // Example for testing
-		}
-
-		fx[1] = 0.0;
-		for (int var = 0; var < solution.getNumberOfVariables(); var++) {
-			//falsos negativos 
-			fx[1] += Math.abs(x[1]); // Example for testing
-		}
-
+		
+		//Objecto que retorna o numero de fp ou fn
+		Avaliador a = new Avaliador();
+		
+		ArrayList<String[]> fileReport = new File_Scanner().Scan_Spam_Ham("ham.log.txt");
+		a.replaceFields(rules, fileReport, false);		
+		fx[0] = a.avaliar();
+		
+		fileReport = new File_Scanner().Scan_Spam_Ham("spam.log.txt");
+		a.replaceFields(rules, fileReport, true);
+		fx[1] = a.avaliar();
+		
 		solution.setObjective(0, fx[0]);
 		solution.setObjective(1, fx[1]);
 	}

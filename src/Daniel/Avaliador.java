@@ -1,58 +1,38 @@
 package Daniel;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
+
+import Bruno.Rule;
 
 public class Avaliador {
-	
-	private ArrayList<Integer> weight;
-	private ArrayList<String> rules;
-	private ArrayList<String[]> fileReport;
-	
+
+	private ArrayList<Rule> rules;
+	private ArrayList<String[]> log;
+
 	private int positive;
 	private int negative;
 	private Boolean spam;
 	
-	public Avaliador(ArrayList<Integer> weigth, ArrayList<String[]> fileReport, String rules_path, boolean spam) {
-		lookupRules(rules_path);
-		replaceFields(weigth, fileReport, spam);
-	}
-	
-	//for testing (temporario)
 	public Avaliador() {
-		rules = new ArrayList<>();
 	}
 	
+	public Avaliador(ArrayList<Rule> rules, ArrayList<String[]> fileReport, boolean spam) {
+		replaceFields(rules, fileReport, spam);
+	}
+
 	/**
 	 * Substitui os parâmetros para novas avaliações
 	 * @param weigth
 	 * @param fileReport
 	 * @param spam
 	 */
-	private void replaceFields(ArrayList<Integer> weigth, ArrayList<String[]> fileReport, boolean spam) {
-		this.weight = weigth;
-		this.fileReport = fileReport;
+	public void replaceFields(ArrayList<Rule> rules, ArrayList<String[]> fileReport, boolean spam) {
+		this.rules = rules;
+		this.log = fileReport;
 		this.spam = spam;
 	}
 
-	/**
-	 * scanner temporário das regras
-	 * @param path
-	 */
-	public void lookupRules(String path) {
-		Scanner scanner;
-		try {
-			scanner = new Scanner(new File("rules.cf"));
-			while(scanner.hasNextLine()) {
-				rules.add(scanner.nextLine());			
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
-	
+
 	/**
 	 * Este método avalia os falsos positivos e falsos negativos conforme se está a avaliar spam ou não
 	 * 
@@ -63,11 +43,15 @@ public class Avaliador {
 	 * @return positive
 	 */
 	public int avaliar() {
-		for (int i = 0, k = 0; i < fileReport.size(); i++, k = 0) {
-			String [] rules_present = fileReport.get(i);
-			for (int j = 0; j < rules_present.length; j++)
-				if (rules.contains(rules_present[j])) 
-					k += weight.get(rules.indexOf(rules_present[j]));
+		for (int i = 0, k = 0; i < log.size(); i++, k = 0) {
+			String [] rules_present = log.get(i);
+			for (int j = 0; j < rules_present.length; j++) {
+				for (int j2 = 0; j2 < rules.size(); j2++) {
+					if (rules.get(j2).getName() == rules_present[j]) {
+						k += rules.get(j2).getValor();
+					}
+				}
+			}
 			if (k >= 5) 
 				positive++;
 			else 
