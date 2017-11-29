@@ -19,7 +19,7 @@ public class Avaliador {
 	}
 	
 	/**
-	 * Substitui os parâmetros para novas avaliaçoes
+	 * Substitui os parâmetros para novas avaliações
 	 * @param weigth
 	 * @param fileReport
 	 * @param spam
