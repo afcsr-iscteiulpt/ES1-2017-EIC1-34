@@ -31,7 +31,7 @@ public class GUI{
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private DefaultListModel<String> model1;
+	public DefaultListModel<String> model1;
 	private DefaultListModel<String> model2;
 	private JTextField textField_3;
 	private JTextField textField_4;
