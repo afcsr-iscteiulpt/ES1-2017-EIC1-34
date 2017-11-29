@@ -3,6 +3,8 @@ package Alberto;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.ScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,6 +24,9 @@ import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JScrollBar;
 import javax.swing.border.LineBorder;
+
+import Bruno.Cliente;
+
 import javax.swing.ListModel;
 
 public class GUI{
@@ -32,33 +37,33 @@ public class GUI{
 	private JTextField textField_1;
 	private JTextField textField_2;
 	public DefaultListModel<String> model1;
-	private DefaultListModel<String> model2;
+	public DefaultListModel<String> model2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
-
+	private int index;
 	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUI gui = new GUI();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					GUI gui = new GUI(new C);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the frame.
 	 */
-	public GUI() {
+	public GUI(Cliente c) {
 		
 		frame = new JFrame("Spam Filter Configurator");
 		frame.setVisible(true);
@@ -92,11 +97,22 @@ public class GUI{
 		JList<String> list = new JList<String>(model1);
 		list.setBorder(new LineBorder(new Color(0, 0, 0)));
 		scrollPane.setViewportView(list);
+		list.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e){
+				textField_7.setText("");
+				index = list.getSelectedIndex();
+				c.display_peso(c.getRules_cf());
+			}
+		});
 		
 		
 		JLabel lblValor = new JLabel("Peso:");
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
+		
+		JButton btnGravar = new JButton("Gravar");
+//		btnGravar.add
 		
 		JButton avaliarQualidadeMANUAL = new JButton("Avaliar Qualidade");
 		
@@ -145,7 +161,6 @@ public class GUI{
 		JButton button_1 = new JButton("Browse ");
 		
 		
-		JButton btnGravar = new JButton("Gravar");
 		
 		
 		
@@ -383,7 +398,16 @@ public class GUI{
 		return textField_7;
 	}
 
-	public void setTextField_7(JTextField textField_7) {
-		this.textField_7 = textField_7;
+	public void setTextField_7(String text) {
+		textField_7.setText(text);
 	}
+	
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int i) {
+		this.index = i;
+	}
+	
 }

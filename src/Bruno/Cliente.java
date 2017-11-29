@@ -14,7 +14,7 @@ public class Cliente {
 	private static File_Scanner scanner = new File_Scanner();
 	private static AntiSpamFilterAutomaticConfiguration a = new AntiSpamFilterAutomaticConfiguration();
 	
-	private static GUI gui = new GUI();
+	private GUI gui = new GUI(this);
 	private static ArrayList<Rule> rules_cf;
 	private static ArrayList<String[]> spam;
 	private static ArrayList<String[]> ham;
@@ -26,24 +26,30 @@ public class Cliente {
 	}
 	
 	//poe  alista das rules.cf na jlist 
-	private void list_to_model(ArrayList<Rule> list) throws FileNotFoundException{
-		get_rules_lists();		
-		list = rules_cf;
+	private void rules_cf_to_Jlist(ArrayList<Rule> list) throws FileNotFoundException{
 		for(int i = 0; i < list.size(); i++ ){
 			gui.model1.addElement(list.get(i).getName());
-		
 		}
+	}
+	
+	public void display_peso(ArrayList<Rule> list){
+		gui.setTextField_7("" + rules_cf.get(gui.getIndex()).getValor());
+	}
+	
+	public void change_peso(double x){
 		
 	}
 	
-	
 	//main ainda não terminado
 	public static void main(String[] arg) throws IOException  {
+		get_rules_lists();		
 		Cliente c = new Cliente();
-		c.list_to_model(rules_cf);
-//		list_to_model(rules_cf);
+		c.rules_cf_to_Jlist(rules_cf);		
 		
-		
+	}
+	
+	public ArrayList<Rule> getRules_cf(){
+		return rules_cf;
 	}
 	
 }
