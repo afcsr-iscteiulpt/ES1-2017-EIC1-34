@@ -1,5 +1,7 @@
 package Daniel;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,15 +9,20 @@ public class Avaliador {
 	
 	private ArrayList<Integer> weight;
 	private ArrayList<String> rules;
-	private ArrayList<String> fileReport;
+	private ArrayList<String[]> fileReport;
 	
 	private int positive;
 	private int negative;
 	private Boolean spam;
 	
-	public Avaliador(ArrayList<Integer> weigth, ArrayList<String> fileReport, String rules_path, boolean spam) {
+	public Avaliador(ArrayList<Integer> weigth, ArrayList<String[]> fileReport, String rules_path, boolean spam) {
 		lookupRules(rules_path);
 		replaceFields(weigth, fileReport, spam);
+	}
+	
+	//for testing (temporario)
+	public Avaliador() {
+		rules = new ArrayList<>();
 	}
 	
 	/**
@@ -24,7 +31,7 @@ public class Avaliador {
 	 * @param fileReport
 	 * @param spam
 	 */
-	private void replaceFields(ArrayList<Integer> weigth, ArrayList<String> fileReport, boolean spam) {
+	private void replaceFields(ArrayList<Integer> weigth, ArrayList<String[]> fileReport, boolean spam) {
 		this.weight = weigth;
 		this.fileReport = fileReport;
 		this.spam = spam;
@@ -34,9 +41,16 @@ public class Avaliador {
 	 * scanner temporário das regras
 	 * @param path
 	 */
-	private void lookupRules(String path) {
-		Scanner scanner = new Scanner(path + "/rules.cf");
-		rules.add(scanner.nextLine());
+	public void lookupRules(String path) {
+		Scanner scanner;
+		try {
+			scanner = new Scanner(new File("rules.cf"));
+			while(scanner.hasNextLine()) {
+				rules.add(scanner.nextLine());			
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -50,7 +64,7 @@ public class Avaliador {
 	 */
 	public int avaliar() {
 		for (int i = 0, k = 0; i < fileReport.size(); i++, k = 0) {
-			String [] rules_present = fileReport.get(i).split(" ");
+			String [] rules_present = fileReport.get(i);
 			for (int j = 0; j < rules_present.length; j++)
 				if (rules.contains(rules_present[j])) 
 					k += weight.get(rules.indexOf(rules_present[j]));
