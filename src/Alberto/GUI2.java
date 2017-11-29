@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -24,7 +25,10 @@ public class GUI2 extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JList list;
+	private DefaultListModel<String> model1;
+	private DefaultListModel<String> model2;
+	private JList list1;
+	private JList list2;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
@@ -51,75 +55,81 @@ public class GUI2 extends JFrame {
 	 * Create the frame.
 	 */
 	public GUI2() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 488, 578);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("Path rules.cf");
-		
-		JLabel lblPathHamlog = new JLabel("Path ham.log");
-		
-		JLabel lblPathSpamlog = new JLabel("Path spam.log");
-		
+		JLabel lblNewLabel = new JLabel("Path rules.cf");		
 		textField = new JTextField();
 		textField.setColumns(10);
 		
+		JLabel lblPathHamlog = new JLabel("Path ham.log");
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		
+		JLabel lblPathSpamlog = new JLabel("Path spam.log");
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		
+		//--------------------------------------------------------------------------------
 		JSeparator separator = new JSeparator();
+		//--------------------------------------------------------------------------------
+
+		//MANUAL
 		
-		list = new JList();
-		list.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
+		model1 = new DefaultListModel<>();
+		list1 = new JList<>(model1);
 		
-		JButton btnNewButton = new JButton("Avaliar Qualidade");
+		list1.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
 		
-		JButton btnGravarConfigurao = new JButton("Gravar Configuração");
+		JLabel lblValor = new JLabel("Valor:");
+		textField_7 = new JTextField();
+		textField_7.setColumns(10);
 		
-		JSeparator separator_1 = new JSeparator();
+		JButton avaliarQualidadeMANUAL = new JButton("Avaliar Qualidade");
+		
+		JButton gravarConfigMANUAL = new JButton("Gravar Configuração");
 		
 		JLabel lblFalsosPositivos = new JLabel("Falsos Positivos");
-		
-		JLabel lblFalsosNegativos = new JLabel("Falsos Negativos");
-		
 		textField_3 = new JTextField();
 		textField_3.setBackground(new Color(152, 251, 152));
-		textField_3.setForeground(new Color(152, 251, 152));
 		textField_3.setColumns(10);
 		
+		JLabel lblFalsosNegativos = new JLabel("Falsos Negativos");
 		textField_4 = new JTextField();
 		textField_4.setBackground(new Color(255, 182, 193));
 		textField_4.setColumns(10);
 		
-		JList list_2 = new JList();
-		list_2.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
+		//--------------------------------------------------------------------------------
+		JSeparator separator_1 = new JSeparator();
+		//--------------------------------------------------------------------------------
+
+		//AUTO
 		
-		JButton btnGerarConfigurao = new JButton("Gerar Configuração");
+		model2 = new DefaultListModel<>();
+		list2 = new JList<>(model2);
+		list2.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK));
 		
-		JButton btnGravar = new JButton("Gravar Configuração");
+		JButton gerarConfigAUTO = new JButton("Gerar Configuração");
+		
+		JButton gravarConfigAUTO = new JButton("Gravar Configuração");
 		
 		JLabel label = new JLabel("Falsos Positivos");
-		
-		JLabel label_1 = new JLabel("Falsos Negativos");
-		
 		textField_5 = new JTextField();
-		textField_5.setForeground(new Color(152, 251, 152));
 		textField_5.setColumns(10);
 		textField_5.setBackground(new Color(152, 251, 152));
 		
+		JLabel label_1 = new JLabel("Falsos Negativos");
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
 		textField_6.setBackground(new Color(255, 182, 193));
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
 		
-		JLabel lblValor = new JLabel("Valor:");
+		// ORGANIZAÇÃO DO LAYOUT ----------------------------------------------------------
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -143,7 +153,7 @@ public class GUI2 extends JFrame {
 								.addComponent(separator, GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(16)
-							.addComponent(list, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+							.addComponent(list1, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
@@ -160,15 +170,15 @@ public class GUI2 extends JFrame {
 												.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)))
 										.addGroup(gl_contentPane.createSequentialGroup()
 											.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-												.addComponent(btnGravarConfigurao, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-												.addComponent(btnNewButton))
+												.addComponent(gravarConfigMANUAL, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+												.addComponent(avaliarQualidadeMANUAL))
 											.addGap(29))))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(59)
 									.addComponent(lblValor, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(16)
-							.addComponent(list_2, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+							.addComponent(list2, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 								.addComponent(label, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
@@ -177,8 +187,8 @@ public class GUI2 extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(btnGravar, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnGerarConfigurao, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE))
+										.addComponent(gravarConfigAUTO, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+										.addComponent(gerarConfigAUTO, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE))
 									.addGap(23))
 								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE))))
@@ -206,9 +216,9 @@ public class GUI2 extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(49)
-									.addComponent(btnNewButton)
+									.addComponent(avaliarQualidadeMANUAL)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnGravarConfigurao))
+									.addComponent(gravarConfigMANUAL))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(34)
 									.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
@@ -224,15 +234,15 @@ public class GUI2 extends JFrame {
 							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblValor)
-								.addComponent(list, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(list1, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(40)
-							.addComponent(btnGerarConfigurao)
+							.addComponent(gerarConfigAUTO)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnGravar)
+							.addComponent(gravarConfigAUTO)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -243,9 +253,91 @@ public class GUI2 extends JFrame {
 								.addComponent(label_1)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(list_2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(list2, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(26, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
+	}
+
+	//--------------------------------------------------------------------------------	
+	
+	public JTextField getTextField() {
+		return textField;
+	}
+
+	public void setTextField(JTextField textField) {
+		this.textField = textField;
+	}
+
+	public JTextField getTextField_1() {
+		return textField_1;
+	}
+
+	public void setTextField_1(JTextField textField_1) {
+		this.textField_1 = textField_1;
+	}
+
+	public JTextField getTextField_2() {
+		return textField_2;
+	}
+
+	public void setTextField_2(JTextField textField_2) {
+		this.textField_2 = textField_2;
+	}
+
+	public DefaultListModel<String> getModel1() {
+		return model1;
+	}
+
+	public void setModel1(DefaultListModel<String> model1) {
+		this.model1 = model1;
+	}
+
+	public DefaultListModel<String> getModel2() {
+		return model2;
+	}
+
+	public void setModel2(DefaultListModel<String> model2) {
+		this.model2 = model2;
+	}
+
+	public JTextField getTextField_3() {
+		return textField_3;
+	}
+
+	public void setTextField_3(JTextField textField_3) {
+		this.textField_3 = textField_3;
+	}
+
+	public JTextField getTextField_4() {
+		return textField_4;
+	}
+
+	public void setTextField_4(JTextField textField_4) {
+		this.textField_4 = textField_4;
+	}
+
+	public JTextField getTextField_5() {
+		return textField_5;
+	}
+
+	public void setTextField_5(JTextField textField_5) {
+		this.textField_5 = textField_5;
+	}
+
+	public JTextField getTextField_6() {
+		return textField_6;
+	}
+
+	public void setTextField_6(JTextField textField_6) {
+		this.textField_6 = textField_6;
+	}
+
+	public JTextField getTextField_7() {
+		return textField_7;
+	}
+
+	public void setTextField_7(JTextField textField_7) {
+		this.textField_7 = textField_7;
 	}
 }
