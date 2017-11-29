@@ -55,8 +55,7 @@ public class AntiSpamFilterAutomaticConfiguration {
 		new GenerateBoxplotsWithR<>(experiment).setRows(1).setColumns(1).run();
 	}
 
-	static List<ExperimentAlgorithm<DoubleSolution, List<DoubleSolution>>> configureAlgorithmList(
-			List<ExperimentProblem<DoubleSolution>> problemList) {
+	static List<ExperimentAlgorithm<DoubleSolution, List<DoubleSolution>>> configureAlgorithmList(List<ExperimentProblem<DoubleSolution>> problemList) {
 		List<ExperimentAlgorithm<DoubleSolution, List<DoubleSolution>>> algorithms = new ArrayList<>();
 
 		for (int i = 0; i < problemList.size(); i++) {
