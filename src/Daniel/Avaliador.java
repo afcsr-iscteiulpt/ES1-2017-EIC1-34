@@ -40,7 +40,7 @@ public class Avaliador {
 	}
 	
 	/**
-	 * Este método avalia os falsos positivos e falsos negativos conforme se está a avaliar spam ou nao
+	 * Este método avalia os falsos positivos e falsos negativos conforme se está a avaliar spam ou não
 	 * 
 	 * retorna negative se esta a avaliar spam
 	 * retorna positive se esta a avaliar ham
