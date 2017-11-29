@@ -3,6 +3,8 @@ package Alberto;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,6 +22,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JScrollBar;
 import javax.swing.border.LineBorder;
 import javax.swing.ListModel;
@@ -38,6 +41,9 @@ public class GUI{
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private String rulespath;
+	private String hampath;
+	private String pampath;
 
 	
 	/**
@@ -144,14 +150,38 @@ public class GUI{
 		
 		JButton button_1 = new JButton("Browse ");
 		
-		
 		JButton btnGravar = new JButton("Gravar");
 		
+		btnNewButton.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  JFileChooser ruleschooser = new JFileChooser();
+				  ruleschooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				  ruleschooser.showOpenDialog(null);
+				  textField.setText(ruleschooser.getSelectedFile().getAbsolutePath());
+				  rulespath = textField_2.getText();
+			  }
+		});
 		
+		button.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  JFileChooser hamchooser = new JFileChooser();
+				  hamchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				  hamchooser.showOpenDialog(null);
+				  textField_1.setText(hamchooser.getSelectedFile().getAbsolutePath());
+				  hampath = textField_2.getText();
+			  }
+		});
 		
+		button_1.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  JFileChooser pamchooser = new JFileChooser();
+				  pamchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				  pamchooser.showOpenDialog(null);
+				  textField_2.setText(pamchooser.getSelectedFile().getAbsolutePath());
+				  pampath = textField_2.getText();
+			  }
+		});
 		
-		
-	
 		
 		// ORGANIZAÇÃO DO LAYOUT ----------------------------------------------------------
 		
@@ -386,4 +416,29 @@ public class GUI{
 	public void setTextField_7(JTextField textField_7) {
 		this.textField_7 = textField_7;
 	}
+
+	public String getRulespath() {
+		return rulespath;
+	}
+
+	public void setRulespath(String rulespath) {
+		this.rulespath = rulespath;
+	}
+
+	public String getHampath() {
+		return hampath;
+	}
+
+	public void setHampath(String hampath) {
+		this.hampath = hampath;
+	}
+
+	public String getPampath() {
+		return pampath;
+	}
+
+	public void setPampath(String pampath) {
+		this.pampath = pampath;
+	}
+	
 }
