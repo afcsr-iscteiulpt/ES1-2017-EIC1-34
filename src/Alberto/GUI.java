@@ -3,6 +3,8 @@ package Alberto;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -112,7 +114,14 @@ public class GUI{
 		textField_7.setColumns(10);
 		
 		JButton btnGravar = new JButton("Gravar");
-//		btnGravar.add
+		btnGravar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				index = list.getSelectedIndex();
+				c.change_peso(index,  Double.parseDouble(textField_7.getText()));
+				
+			}
+		});
 		
 		JButton avaliarQualidadeMANUAL = new JButton("Avaliar Qualidade");
 		

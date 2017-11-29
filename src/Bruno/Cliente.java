@@ -36,8 +36,8 @@ public class Cliente {
 		gui.setTextField_7("" + rules_cf.get(gui.getIndex()).getValor());
 	}
 	
-	public void change_peso(double x){
-		
+	public void change_peso(int index, double valor){
+		rules_cf.get(index).setValor(valor);
 	}
 	
 	//main ainda não terminado

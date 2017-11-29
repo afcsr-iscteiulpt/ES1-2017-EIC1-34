@@ -1,4 +1,4 @@
-package Bruno;
+package Bruno; 
 
 public class Rule {
 
