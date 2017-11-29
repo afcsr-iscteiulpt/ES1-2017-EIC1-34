@@ -19,9 +19,8 @@ import java.awt.Color;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 
-public class GUI2 extends JFrame {
-
-
+public class GUI extends JFrame {
+	
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -44,7 +43,7 @@ public class GUI2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI2 frame = new GUI2();
+					GUI frame = new GUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +55,7 @@ public class GUI2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI2() {
+	public GUI() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 488, 578);
