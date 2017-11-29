@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,6 +25,7 @@ import javax.swing.border.BevelBorder;
 import java.awt.Color;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JScrollBar;
 import javax.swing.border.LineBorder;
 
@@ -45,7 +47,14 @@ public class GUI{
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+
 	private int index;
+
+	private String rulespath;
+	private String hampath;
+	private String spampath;
+
+
 	
 	/**
 	 * Launch the application.
@@ -163,19 +172,50 @@ public class GUI{
 		textField_6.setColumns(10);
 		textField_6.setBackground(new Color(255, 182, 193));
 		
+		
+//--------------------------------------------------------------------------------
+
+		//PATH
+		
+		
 		JButton btnNewButton = new JButton("Browse ");
 		
 		JButton button = new JButton("Browse ");
 		
 		JButton button_1 = new JButton("Browse ");
 		
+
 		
+		btnNewButton.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  JFileChooser ruleschooser = new JFileChooser();
+				  ruleschooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				  ruleschooser.showOpenDialog(null);
+				  textField.setText(ruleschooser.getSelectedFile().getAbsolutePath());
+				  rulespath = textField_2.getText();
+			  }
+		});
 		
+		button.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  JFileChooser hamchooser = new JFileChooser();
+				  hamchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				  hamchooser.showOpenDialog(null);
+				  textField_1.setText(hamchooser.getSelectedFile().getAbsolutePath());
+				  hampath = textField_2.getText();
+			  }
+		});
 		
+		button_1.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  JFileChooser pamchooser = new JFileChooser();
+				  pamchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				  pamchooser.showOpenDialog(null);
+				  textField_2.setText(pamchooser.getSelectedFile().getAbsolutePath());
+				  spampath = textField_2.getText();
+			  }
+		});
 		
-		
-		
-	
 		
 		// ORGANIZAÇÃO DO LAYOUT ----------------------------------------------------------
 		
@@ -410,6 +450,7 @@ public class GUI{
 	public void setTextField_7(String text) {
 		textField_7.setText(text);
 	}
+
 	
 	public int getIndex() {
 		return index;
@@ -417,6 +458,31 @@ public class GUI{
 
 	public void setIndex(int i) {
 		this.index = i;
+	}
+
+	public String getRulespath() {
+		return rulespath;
+	}
+
+	public void setRulespath(String rulespath) {
+		this.rulespath = rulespath;
+	}
+
+	public String getHampath() {
+		return hampath;
+	}
+
+	public void setHampath(String hampath) {
+		this.hampath = hampath;
+	}
+
+	public String getSpampath() {
+		return spampath;
+	}
+
+	public void setSpampath(String spampath) {
+		this.spampath = spampath;
+
 	}
 	
 }
