@@ -19,10 +19,11 @@ public class Cliente {
 	private static ArrayList<String[]> spam;
 	private static ArrayList<String[]> ham;
 	
-	private static void get_rules_lists() throws FileNotFoundException{
-		rules_cf = scanner.Scan_Rules_cf("C://Users/bruno/Desktop/rules.cf");
-		spam = scanner.Scan_Spam_Ham("C://Users/bruno/Desktop/spam.log.txt");
-		ham = scanner.Scan_Spam_Ham("C://Users/bruno/Desktop/ham.log");
+	private void get_rules_lists() throws FileNotFoundException{
+		rules_cf = scanner.Scan_Rules_cf(gui.getSpampath());
+//		rules_cf = scanner.Scan_Rules_cf("C://Users/bruno/Desktop/rules.cf");
+//		spam = scanner.Scan_Spam_Ham("C://Users/bruno/Desktop/spam.log.txt");
+//		ham = scanner.Scan_Spam_Ham("C://Users/bruno/Desktop/ham.log");
 	}
 	
 	//poe  alista das rules.cf na jlist 
@@ -42,8 +43,8 @@ public class Cliente {
 	
 	//main ainda não terminado
 	public static void main(String[] arg) throws IOException  {
-		get_rules_lists();		
 		Cliente c = new Cliente();
+		c.get_rules_lists();		
 		c.rules_cf_to_Jlist(rules_cf);		
 		
 	}
