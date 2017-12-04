@@ -76,7 +76,7 @@ public class GUI{
 		JLabel lblPathSpamlog = new JLabel("Path spam.log");
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
-		
+		 
 		//--------------------------------------------------------------------------------
 		JSeparator separator = new JSeparator();
 		//--------------------------------------------------------------------------------
