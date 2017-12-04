@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.ListModel;
 
 import Alberto.GUI;
+import Daniel.Avaliador;
 import antiSpamFilter.AntiSpamFilterAutomaticConfiguration;
 
 public class Cliente {
@@ -39,6 +40,18 @@ public class Cliente {
 	
 	public void change_peso(int index, double valor){
 		rules_cf.get(index).setValor(valor);
+	}
+	
+	/**
+	 * testa a configuracao manual dada pelo utilizador
+	 */
+	public void testManual() {
+		Avaliador a = new Avaliador();
+		a.replaceFields(rules_cf, ham, false);
+		int fp = a.avaliar();
+		a.replaceFields(rules_cf, spam, true);
+		int fn = a.avaliar();
+		//aqui muda os textarea do gui
 	}
 	
 	//main ainda não terminado
