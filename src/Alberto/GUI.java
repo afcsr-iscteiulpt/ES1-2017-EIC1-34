@@ -50,7 +50,7 @@ public class GUI{
 
 	private int index;
 
-	private String rulespath;
+	private String rulespath; 
 	private String hampath;
 	private String spampath;  		
 	
