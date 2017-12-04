@@ -52,7 +52,7 @@ public class GUI{
 
 	private String rulespath;
 	private String hampath;
-	private String spampath;
+	private String spampath; 
 
 	public GUI(Cliente c) {
 		
