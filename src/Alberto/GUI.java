@@ -52,9 +52,9 @@ public class GUI{
 
 	private String rulespath;
 	private String hampath;
-	private String spampath; 
-
-	public GUI(Cliente c) { 
+	private String spampath;  		
+	
+	public GUI(Cliente c) {   
 		
 		frame = new JFrame("Spam Filter Configurator");
 		frame.setVisible(true);
