@@ -60,7 +60,7 @@ public class GUI{
 		frame.setVisible(true);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 695, 690);
+		frame.setBounds(100, 100, 695, 690); 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
