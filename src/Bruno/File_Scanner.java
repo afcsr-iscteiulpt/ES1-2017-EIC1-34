@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+ 
 public class File_Scanner {
 
 	
@@ -24,7 +24,7 @@ public class File_Scanner {
 	}
 	
 	//Isto faz o scanner do ham ou do spam 
-	public static ArrayList Scan_Spam_Ham(String path){
+	public static ArrayList Scan_Spam_or_Ham(String path){
 		ArrayList<String[]> list = new ArrayList<String[]>();
 		try {
 			Scanner sc;
