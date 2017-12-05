@@ -60,7 +60,7 @@ public class GUI{
 		frame.setVisible(true);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 695, 690); 
+		frame.setBounds(100, 100, 692, 670); 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
@@ -196,8 +196,6 @@ public class GUI{
 			  }
 		});
 		
-		JButton btnGravar_1 = new JButton("Gravar");
-		
 		
 		// ORGANIZAÇÃO DO LAYOUT ----------------------------------------------------------
 		
@@ -210,23 +208,21 @@ public class GUI{
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(30)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-											.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.UNRELATED)
-											.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE))
-										.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-											.addComponent(label, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-											.addGap(18)
-											.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE))))
 								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 										.addComponent(gravarConfigAUTO, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
 										.addComponent(gerarConfigAUTO, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE))
-									.addGap(28))))
+									.addGap(23))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(18)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(label, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
+										.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
+									.addGap(24)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+										.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)))))
 						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
@@ -263,16 +259,10 @@ public class GUI{
 								.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(button, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-									.addComponent(btnGravar_1, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-									.addGap(59))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
-										.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE))
-									.addPreferredGap(ComponentPlacement.RELATED, 269, Short.MAX_VALUE)))))
+								.addComponent(button, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+								.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, 269, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -287,8 +277,7 @@ public class GUI{
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPathHamlog)
 						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button)
-						.addComponent(btnGravar_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE))
+						.addComponent(button))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPathSpamlog)
@@ -319,22 +308,24 @@ public class GUI{
 						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(16)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(75)
 							.addComponent(gerarConfigAUTO)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(gravarConfigAUTO)
-							.addGap(18)
+							.addGap(33)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label)
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
+								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(label_1)
-								.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addContainerGap())
-						.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_1)))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(18)
+							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
 		);
 	
 		contentPane.setLayout(gl_contentPane);
