@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -169,33 +169,63 @@ public class GUI{
 		btnNewButton.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
 				  JFileChooser ruleschooser = new JFileChooser();
-				  ruleschooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				  ruleschooser.showOpenDialog(null);
 				  textField.setText(ruleschooser.getSelectedFile().getAbsolutePath());
-				  rulespath = textField_2.getText();
+				  rulespath = textField.getText();
+				  rulespath = rulespath.replaceAll("\\\\","/" );
+				  rulespath = rulespath.replaceFirst("/","//" );
+			  
 			  }
 		});
 		
 		button.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
 				  JFileChooser hamchooser = new JFileChooser();
-				  hamchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				  hamchooser.showOpenDialog(null);
 				  textField_1.setText(hamchooser.getSelectedFile().getAbsolutePath());
-				  hampath = textField_2.getText();
+				  hampath = textField_1.getText();
+				  hampath = hampath.replaceAll("\\\\","/" );
+				  hampath = hampath.replaceFirst("/","//" );
+			
 			  }
 		});
 		
 		button_1.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
 				  JFileChooser pamchooser = new JFileChooser();
-				  pamchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 				  pamchooser.showOpenDialog(null);
 				  textField_2.setText(pamchooser.getSelectedFile().getAbsolutePath());
 				  spampath = textField_2.getText();
+				  spampath = spampath.replaceAll("\\\\","/" );
+				  spampath = spampath.replaceFirst("/","//" );
 			  }
 		});
 		
+
+		JButton btnGravar_1 = new JButton("Gravar");
+		btnGravar_1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				if(rulespath != null){
+					  try {
+							c.get_rules_list();
+							c.rules_cf_to_Jlist();
+						} catch (FileNotFoundException e1) {}
+				}
+				if(hampath != null){
+					 try {
+							c.get_ham_list();
+						} catch (FileNotFoundException e1) {}
+				}
+				if(spampath != null){
+					 try {
+							c.get_spam_list();
+						} catch (FileNotFoundException e1) {}
+				}
+				
+			}
+		});
+		
+//>>>>>>> branch 'master' of https://github.com/afcsr-iscteiulpt/ES1-2017-EIC1-34.git
 		
 		// ORGANIZAÇÃO DO LAYOUT ----------------------------------------------------------
 		
