@@ -54,12 +54,12 @@ public class AntiSpamFilterProblem extends AbstractDoubleProblem {
 		//Objecto que retorna o numero de fp ou fn
 		Avaliador a = new Avaliador();
 		
-		ArrayList<String[]> fileReport = new File_Scanner().Scan_Spam_Ham("ham.log.txt");
+		ArrayList<String[]> fileReport = new File_Scanner().Scan_Spam_or_Ham("ham.log.txt");
 		a.replaceFields(rules, fileReport, false);
 		//fp
 		fx[0] = a.avaliar();
 		
-		fileReport = new File_Scanner().Scan_Spam_Ham("spam.log.txt");
+		fileReport = new File_Scanner().Scan_Spam_or_Ham("spam.log.txt");
 		a.replaceFields(rules, fileReport, true);
 		//fn
 		fx[1] = a.avaliar();
