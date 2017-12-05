@@ -1,7 +1,7 @@
 package Bruno; 
 
 public class Rule {
-
+ 
 	private String name;
 	private double valor;
 	

@@ -93,7 +93,7 @@ public class GUI{
 			public void mouseClicked(MouseEvent e){
 				textField_7.setText("");
 				index = list.getSelectedIndex();
-				c.display_peso(c.getRules_cf());
+				c.display_peso(c.getRules_cf(), index);
 			}
 		});
 		
@@ -113,6 +113,14 @@ public class GUI{
 		});
 		
 		JButton avaliarQualidadeMANUAL = new JButton("Avaliar Qualidade");
+		
+		 avaliarQualidadeMANUAL.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  c.start_Avaliador();
+				  
+			  }
+		});
+		
 		
 		JButton gravarConfigMANUAL = new JButton("Gravar Configuração");
 		
@@ -175,6 +183,11 @@ public class GUI{
 				  rulespath = rulespath.replaceAll("\\\\","/" );
 				  rulespath = rulespath.replaceFirst("/","//" );
 			  
+				  try {
+						c.get_rules_list();
+						c.rules_cf_to_Jlist();
+					} catch (FileNotFoundException e1) {}
+				  
 			  }
 		});
 		
@@ -187,6 +200,10 @@ public class GUI{
 				  hampath = hampath.replaceAll("\\\\","/" );
 				  hampath = hampath.replaceFirst("/","//" );
 			
+				  try {
+						c.get_ham_list();
+					} catch (FileNotFoundException e1) {}
+				  
 			  }
 		});
 		
@@ -198,32 +215,14 @@ public class GUI{
 				  spampath = textField_2.getText();
 				  spampath = spampath.replaceAll("\\\\","/" );
 				  spampath = spampath.replaceFirst("/","//" );
+				  
+				  try {
+						c.get_spam_list();
+					} catch (FileNotFoundException e1) {}
+				  
 			  }
 		});
 		
-
-		JButton btnGravar_1 = new JButton("Gravar");
-		btnGravar_1.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				if(rulespath != null){
-					  try {
-							c.get_rules_list();
-							c.rules_cf_to_Jlist();
-						} catch (FileNotFoundException e1) {}
-				}
-				if(hampath != null){
-					 try {
-							c.get_ham_list();
-						} catch (FileNotFoundException e1) {}
-				}
-				if(spampath != null){
-					 try {
-							c.get_spam_list();
-						} catch (FileNotFoundException e1) {}
-				}
-				
-			}
-		});
 		
 //>>>>>>> branch 'master' of https://github.com/afcsr-iscteiulpt/ES1-2017-EIC1-34.git
 		
@@ -407,16 +406,16 @@ public class GUI{
 		return textField_3;
 	}
 
-	public void setTextField_3(JTextField textField_3) {
-		this.textField_3 = textField_3;
+	public void setTextField_3(String text) {
+		textField_3.setText(text);
 	}
 
 	public JTextField getTextField_4() {
 		return textField_4;
 	}
 
-	public void setTextField_4(JTextField textField_4) {
-		this.textField_4 = textField_4;
+	public void setTextField_4(String text) {
+		textField_4.setText(text);
 	}
 
 	public JTextField getTextField_5() {
