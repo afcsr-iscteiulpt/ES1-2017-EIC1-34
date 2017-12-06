@@ -30,6 +30,8 @@ public class Avaliador {
 		this.rules = rules;
 		this.log = fileReport;
 		this.spam = spam;
+		positive = 0;
+		negative = 0;
 	}
 
 
@@ -45,18 +47,19 @@ public class Avaliador {
 	public int avaliar() {
 		for (int i = 0, k = 0; i < log.size(); i++, k = 0) {
 			String [] rules_present = log.get(i);
+			
 			for (int j = 0; j < rules_present.length; j++) {
 				for (int j2 = 0; j2 < rules.size(); j2++) {
-					if (rules.get(j2).getName() == rules_present[j]) {
+					if(rules.get(j2).getName().equals(rules_present[j]))
 						k += rules.get(j2).getValor();
-					}
 				}
 			}
+			
 			if (k >= 5) 
 				positive++;
 			else 
 				negative++;
 		}
-		return spam ?  negative : positive;
+		return spam ? negative : positive;
 	}
 }
