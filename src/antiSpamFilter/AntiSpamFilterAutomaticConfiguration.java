@@ -27,36 +27,6 @@ public class AntiSpamFilterAutomaticConfiguration {
 	
 	private static final int INDEPENDENT_RUNS = 5 ;
 	
-//	public static void main(String[] args) throws IOException {
-//		String experimentBaseDirectory = "experimentBaseDirectory";
-//
-//		List<ExperimentProblem<DoubleSolution>> problemList = new ArrayList<>();
-//		
-//		//TODO tenho de fazer a referencia no cliente aos avaliadores e depois sim posso fazer isto
-//		problemList.add(new ExperimentProblem<>(new AntiSpamFilterProblem()));
-//
-//		List<ExperimentAlgorithm<DoubleSolution, List<DoubleSolution>>> algorithmList =
-//				configureAlgorithmList(problemList);
-//
-//		Experiment<DoubleSolution, List<DoubleSolution>> experiment =
-//				new ExperimentBuilder<DoubleSolution, List<DoubleSolution>>("AntiSpamStudy")
-//				.setAlgorithmList(algorithmList)
-//				.setProblemList(problemList)
-//				.setExperimentBaseDirectory(experimentBaseDirectory)
-//				.setOutputParetoFrontFileName("FUN")
-//				.setOutputParetoSetFileName("VAR")
-//				.setReferenceFrontDirectory(experimentBaseDirectory+"/referenceFronts")
-//				.setIndicatorList(Arrays.asList(new PISAHypervolume<DoubleSolution>()))
-//				.setIndependentRuns(INDEPENDENT_RUNS)
-//				.setNumberOfCores(8)
-//				.build();
-//
-//		new ExecuteAlgorithms<>(experiment).run();
-//		new GenerateReferenceParetoSetAndFrontFromDoubleSolutions(experiment).run();
-//		new ComputeQualityIndicators<>(experiment).run() ;
-//		new GenerateLatexTablesWithStatistics(experiment).run() ;
-//		new GenerateBoxplotsWithR<>(experiment).setRows(1).setColumns(1).run();
-//	}
 	
 	public void execute(Cliente cliente) throws IOException {
 		String experimentBaseDirectory = "experimentBaseDirectory";

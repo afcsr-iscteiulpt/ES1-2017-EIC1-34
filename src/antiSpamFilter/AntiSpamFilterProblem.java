@@ -14,11 +14,6 @@ public class AntiSpamFilterProblem extends AbstractDoubleProblem {
 	
 	private ArrayList<Rule> rules = new ArrayList<Rule>();
 	private Cliente cliente;
-	
-//	public AntiSpamFilterProblem(Cliente cliente) {
-//		// 10 variables (anti-spam filter rules) by default 
-//		this(10, cliente);
-//	}
 
 	public AntiSpamFilterProblem(Cliente cliente) {
 		

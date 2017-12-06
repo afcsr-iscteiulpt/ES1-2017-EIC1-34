@@ -155,6 +155,7 @@ public class GUI{
 		});
 		
 		JButton gravarConfigAUTO = new JButton("Gravar Configuração");
+		//TODO listener que cria ficheiro com pesos da configuracao normal
 		
 		JLabel label = new JLabel("Falsos Positivos");
 		textField_5 = new JTextField();
@@ -429,16 +430,16 @@ public class GUI{
 		return textField_5;
 	}
 
-	public void setTextField_5(JTextField textField_5) {
-		this.textField_5 = textField_5;
+	public void setTextField_5(String text) {
+		this.textField_5.setText(text);
 	}
 
 	public JTextField getTextField_6() {
 		return textField_6;
 	}
 
-	public void setTextField_6(JTextField textField_6) {
-		this.textField_6 = textField_6;
+	public void setTextField_6(String text) {
+		this.textField_6.setText(text);
 	}
 
 	public JTextField getTextField_7() {

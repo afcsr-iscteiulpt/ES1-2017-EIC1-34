@@ -72,8 +72,13 @@ public class Cliente {
 		
 	}
 	
+	/**
+	 * faz a configuracao automatica
+	 */
 	public void start_AutoConfig() {
 		try {
+			gui.setTextField_5("" + falsos_pos_man);
+			gui.setTextField_6("" + falsos_neg_man);
 			new AntiSpamFilterAutomaticConfiguration().execute(this);
 		} catch (IOException e) {
 			e.printStackTrace();
