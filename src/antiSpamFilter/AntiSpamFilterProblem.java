@@ -6,23 +6,24 @@ import java.util.List;
 import org.uma.jmetal.problem.impl.AbstractDoubleProblem;
 import org.uma.jmetal.solution.DoubleSolution;
 
-import Bruno.File_Scanner;
+import Bruno.Cliente;
 import Bruno.Rule;
 import Daniel.Avaliador;
 
 public class AntiSpamFilterProblem extends AbstractDoubleProblem {
 	
-	private ArrayList<Rule> rules = new ArrayList<Rule>();;
+	private ArrayList<Rule> rules = new ArrayList<Rule>();
+	private Cliente cliente;
 	
-	public AntiSpamFilterProblem() {
-		// 10 variables (anti-spam filter rules) by default 
-		this(10);
-	}
+//	public AntiSpamFilterProblem(Cliente cliente) {
+//		// 10 variables (anti-spam filter rules) by default 
+//		this(10, cliente);
+//	}
 
-	@SuppressWarnings({ "unchecked", "static-access" })
-	public AntiSpamFilterProblem(Integer numberOfVariables) {
+	public AntiSpamFilterProblem(Cliente cliente) {
 		
-		rules = new File_Scanner().Scan_Rules_cf("rules.cf");
+		this.cliente = cliente;
+		rules = cliente.getRules_auto();
 		setNumberOfVariables(rules.size());
 		
 		setNumberOfObjectives(2);
@@ -40,28 +41,24 @@ public class AntiSpamFilterProblem extends AbstractDoubleProblem {
 		setUpperLimit(upperLimit);
 	}
 
-	@SuppressWarnings({ "unchecked", "static-access" })
 	public void evaluate(DoubleSolution solution){
-		
 		double[] fx = new double[getNumberOfObjectives()];
 		
-		//preenche os pessos da lista
-		rules = new ArrayList<Rule>();
+		//preenche os pesos da lista
 		for (int i = 0; i < solution.getNumberOfVariables(); i++) {
 			rules.get(i).setValor(solution.getVariableValue(i));
 		}
 		
-		//Objecto que retorna o numero de fp ou fn
 		Avaliador a = new Avaliador();
 		
-		ArrayList<String[]> fileReport = new File_Scanner().Scan_Spam_or_Ham("ham.log.txt");
-		a.replaceFields(rules, fileReport, false);
 		//fp
+		ArrayList<String[]> fileReport = cliente.getHam();
+		a.replaceFields(rules, fileReport, false);
 		fx[0] = a.avaliar();
 		
-		fileReport = new File_Scanner().Scan_Spam_or_Ham("spam.log.txt");
-		a.replaceFields(rules, fileReport, true);
 		//fn
+		fileReport = cliente.getSpam();
+		a.replaceFields(rules, fileReport, true);
 		fx[1] = a.avaliar();
 		
 		solution.setObjective(0, fx[0]);

@@ -148,6 +148,12 @@ public class GUI{
 		
 		JButton gerarConfigAUTO = new JButton("Gerar Configuração");
 		
+		gerarConfigAUTO.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  c.start_AutoConfig();
+			  }
+		});
+		
 		JButton gravarConfigAUTO = new JButton("Gravar Configuração");
 		
 		JLabel label = new JLabel("Falsos Positivos");
@@ -186,6 +192,7 @@ public class GUI{
 				  try {
 						c.get_rules_list();
 						c.rules_cf_to_Jlist();
+						c.createRulesAuto();
 					} catch (FileNotFoundException e1) {}
 				  
 			  }

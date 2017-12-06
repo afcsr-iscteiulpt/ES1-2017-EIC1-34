@@ -21,13 +21,20 @@ public class Cliente {
 	private static ArrayList<String[]> spam;
 	private static ArrayList<String[]> ham;
 	
-	private static int falsos_pos;
-	private static int falsos_neg;
+	private static int falsos_pos_man;
+	private static int falsos_neg_man;
 	
+	private static ArrayList<Rule> rules_auto;
+	
+
 	public void get_rules_list() throws FileNotFoundException{
 		rules_cf = scanner.Scan_Rules_cf(gui.getRulespath());
 	}
 	
+	public void createRulesAuto() {
+		rules_auto = scanner.Scan_Rules_cf(gui.getRulespath());
+	}
+
 	public void get_ham_list() throws FileNotFoundException{
 		ham = scanner.Scan_Spam_or_Ham(gui.getHampath());
 	}
@@ -54,18 +61,22 @@ public class Cliente {
 	
 	public void start_Avaliador(){
 		avaliador.replaceFields(rules_cf, spam, true);
-		falsos_pos = avaliador.avaliar();
+		falsos_pos_man = avaliador.avaliar();
 		
 		avaliador.replaceFields(rules_cf, ham, false);
-		falsos_neg = avaliador.avaliar();
+		falsos_neg_man = avaliador.avaliar();
 		
-		gui.setTextField_3("" + falsos_pos);
-		gui.setTextField_4("" + falsos_neg);
+		gui.setTextField_3("" + falsos_pos_man);
+		gui.setTextField_4("" + falsos_neg_man);
 		
 	}
 	
-	public static void main(String[] arg) throws IOException  {
-		Cliente c = new Cliente();	
+	public void start_AutoConfig() {
+		try {
+			new AntiSpamFilterAutomaticConfiguration().execute(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public ArrayList<Rule> getRules_cf(){
@@ -80,4 +91,11 @@ public class Cliente {
 		return spam;
 	}
 	
+	public ArrayList<Rule> getRules_auto() {
+		return rules_auto;
+	}
+	
+	public static void main(String[] arg) throws IOException  {
+		Cliente c = new Cliente();	
+	}
 }
