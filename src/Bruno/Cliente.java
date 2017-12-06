@@ -39,6 +39,7 @@ public class Cliente {
 	public void rules_cf_to_Jlist() throws FileNotFoundException{
 		for(int i = 0; i < rules_cf.size(); i++ ){
 			gui.model1.addElement(rules_cf.get(i).getName());
+			gui.model2.addElement(rules_cf.get(i).getName());
 		}
 	}
 	
