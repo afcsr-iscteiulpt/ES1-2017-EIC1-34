@@ -41,7 +41,7 @@ public class Cliente {
 	}
 	
 	/**
-	 * metodo auxiliar para criação de uma lista de regras nova
+	 * metodo auxiliar para criaï¿½ï¿½o de uma lista de regras nova
 	 * 
 	 * @return ArrayList<Rule> 
 	 */
@@ -64,7 +64,7 @@ public class Cliente {
 		}
 		gui.model2.clear();
 		for(int i = 0; i < rules_auto.size(); i++ ){
-			gui.model2.addElement(rules_auto.get(i).toDysplay());
+			gui.model2.addElement(rules_auto.get(i).toDisplay());
 		}
 	}
 	
@@ -91,7 +91,7 @@ public class Cliente {
 	}
 	
 	/**
-	 * faz a configuração automática
+	 * faz a configuraï¿½ï¿½o automï¿½tica
 	 */
 	public void start_AutoConfig() {
 		try {

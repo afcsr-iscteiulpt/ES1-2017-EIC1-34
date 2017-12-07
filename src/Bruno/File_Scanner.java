@@ -9,7 +9,7 @@ public class File_Scanner {
 
 	
 	/**
-	 * este método faz o scan do ficheiro das regras
+	 * este mï¿½todo faz o scan do ficheiro das regras
 	 * @param path
 	 * @return
 	 */
@@ -29,7 +29,7 @@ public class File_Scanner {
 	}
 	
 	/**
-	 * este método faz o scan dos ficheiros de ham e spam
+	 * este mï¿½todo faz o scan dos ficheiros de ham e spam
 	 * @param path
 	 * @return
 	 */
@@ -56,7 +56,7 @@ public class File_Scanner {
 	@SuppressWarnings("resource")
 	public static ArrayList<Rule> deciferResults(String rules_path) throws FileNotFoundException {
 		//-----------------------------------------------------------------------------------------------------------
-		//distinguir qual é a melhor configuração das obtidas
+		//distinguir qual ï¿½ a melhor configuraï¿½ï¿½o das obtidas
 		Scanner scan = new Scanner(new File("experimentBaseDirectory/referenceFronts/AntiSpamFilterProblem.rf"));
 		ArrayList<double[]> config = new ArrayList<>();
 		while(scan.hasNext()){
@@ -77,7 +77,7 @@ public class File_Scanner {
 		for (int i = 0; i < best; i++) {
 			scan.nextLine();			
 		}
-		//cria a lista de regras actualizada com os pesos da melhor configuração
+		//cria a lista de regras actualizada com os pesos da melhor configuraï¿½ï¿½o
 		
 		//ArrayList<Rule> finalConf = scan_Rules(rules_path);
 		ArrayList<Rule> finalConf = Scan_Rules_cf(rules_path);
@@ -92,7 +92,7 @@ public class File_Scanner {
 	}
 	
 	/**
-	 * retorna a melhor configuração encontrada
+	 * retorna a melhor configuraï¿½ï¿½o encontrada
 	 * @return
 	 * @throws FileNotFoundException
 	 */
@@ -115,13 +115,6 @@ public class File_Scanner {
 		scan.close();
 		return config.get(best); 
 	}
-	
-	public static void main(String[] arg){
-		try {
-			deciferResults("rules.cf");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-	}
+
 	
 }

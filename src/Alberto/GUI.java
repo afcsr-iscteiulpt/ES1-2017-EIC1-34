@@ -28,23 +28,24 @@ import Bruno.Cliente;
 public class GUI{
 	
 	private JFrame frame;
-	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JPanel lblFalsosPositivosAuto;
+	private JTextField tfRules;
+	private JTextField tfHam;
+	private JTextField tfSpam;
 	public DefaultListModel<String> model1;
 	public DefaultListModel<String> model2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField tfFalsosPositivosManual;
+	private JTextField tfFalsosNegativosManual;
+	private JTextField tfFalsosPositivosAuto;
+	private JTextField tfFalsosNegativosAuto;
+	private JTextField tfPesoManual;
 
 	private int index;
 
 	private String rulespath; 
 	private String hampath; 
 	private String spampath;  		
+	private JTextField tfLoadManual;
 	
 	public GUI(Cliente c) {   
 		
@@ -53,21 +54,21 @@ public class GUI{
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 692, 670); 
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		frame.setContentPane(contentPane);
+		lblFalsosPositivosAuto = new JPanel();
+		lblFalsosPositivosAuto.setBorder(new EmptyBorder(5, 5, 5, 5));
+		frame.setContentPane(lblFalsosPositivosAuto);
 		
-		JLabel lblNewLabel = new JLabel("Path rules.cf");		
-		textField = new JTextField();
-		textField.setColumns(10);
+		JLabel lblPathRules = new JLabel("Path rules.cf");		
+		tfRules = new JTextField();
+		tfRules.setColumns(10);
 		
 		JLabel lblPathHamlog = new JLabel("Path ham.log");
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		tfHam = new JTextField();
+		tfHam.setColumns(10);
 		
 		JLabel lblPathSpamlog = new JLabel("Path spam.log");
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		tfSpam = new JTextField();
+		tfSpam.setColumns(10);
 		 
 		//--------------------------------------------------------------------------------
 		JSeparator separator = new JSeparator();
@@ -83,7 +84,7 @@ public class GUI{
 		list.addMouseListener(new MouseAdapter(){
 			@Override
 			public void mouseClicked(MouseEvent e){
-				textField_7.setText("");
+				tfPesoManual.setText("");
 				index = list.getSelectedIndex();
 				c.display_peso(c.getRules_cf(), index);
 			}
@@ -91,15 +92,15 @@ public class GUI{
 		
 		
 		JLabel lblValor = new JLabel("Peso:");
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
+		tfPesoManual = new JTextField();
+		tfPesoManual.setColumns(10);
 		
-		JButton btnGravar = new JButton("Gravar");
-		btnGravar.addActionListener(new ActionListener() {
+		JButton btnGravarManual = new JButton("Gravar");
+		btnGravarManual.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				index = list.getSelectedIndex();
-				c.change_peso(index,  Double.parseDouble(textField_7.getText()));
+				c.change_peso(index,  Double.parseDouble(tfPesoManual.getText()));
 				
 			}
 		});
@@ -116,15 +117,15 @@ public class GUI{
 		
 		JButton gravarConfigMANUAL = new JButton("Gravar Configuração");
 		
-		JLabel lblFalsosPositivos = new JLabel("Falsos Positivos");
-		textField_3 = new JTextField();
-		textField_3.setBackground(new Color(152, 251, 152));
-		textField_3.setColumns(10);
+		JLabel lblFalsosPositivosManual = new JLabel("Falsos Positivos");
+		tfFalsosPositivosManual = new JTextField();
+		tfFalsosPositivosManual.setBackground(new Color(152, 251, 152));
+		tfFalsosPositivosManual.setColumns(10);
 		
-		JLabel lblFalsosNegativos = new JLabel("Falsos Negativos");
-		textField_4 = new JTextField();
-		textField_4.setBackground(new Color(255, 182, 193));
-		textField_4.setColumns(10);
+		JLabel lblFalsosNegativosManual = new JLabel("Falsos Negativos");
+		tfFalsosNegativosManual = new JTextField();
+		tfFalsosNegativosManual.setBackground(new Color(255, 182, 193));
+		tfFalsosNegativosManual.setColumns(10);
 		
 		//--------------------------------------------------------------------------------
 		JSeparator separator_1 = new JSeparator();
@@ -150,14 +151,14 @@ public class GUI{
 		//TODO listener que cria ficheiro com pesos da configuracao normal
 		
 		JLabel label = new JLabel("Falsos Positivos");
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBackground(new Color(152, 251, 152));
+		tfFalsosPositivosAuto = new JTextField();
+		tfFalsosPositivosAuto.setColumns(10);
+		tfFalsosPositivosAuto.setBackground(new Color(152, 251, 152));
 		
-		JLabel label_1 = new JLabel("Falsos Negativos");
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBackground(new Color(255, 182, 193));
+		JLabel lblFalsosNegativosAuto = new JLabel("Falsos Negativos");
+		tfFalsosNegativosAuto = new JTextField();
+		tfFalsosNegativosAuto.setColumns(10);
+		tfFalsosNegativosAuto.setBackground(new Color(255, 182, 193));
 		
 		
 //--------------------------------------------------------------------------------
@@ -177,8 +178,8 @@ public class GUI{
 			  public void actionPerformed(ActionEvent e) { 
 				  JFileChooser ruleschooser = new JFileChooser();
 				  ruleschooser.showOpenDialog(null);
-				  textField.setText(ruleschooser.getSelectedFile().getAbsolutePath());
-				  rulespath = textField.getText();
+				  tfRules.setText(ruleschooser.getSelectedFile().getAbsolutePath());
+				  rulespath = tfRules.getText();
 				  rulespath = rulespath.replaceAll("\\\\","/" );
 				  rulespath = rulespath.replaceFirst("/","//" );
 			  
@@ -195,8 +196,8 @@ public class GUI{
 			  public void actionPerformed(ActionEvent e) { 
 				  JFileChooser hamchooser = new JFileChooser();
 				  hamchooser.showOpenDialog(null);
-				  textField_1.setText(hamchooser.getSelectedFile().getAbsolutePath());
-				  hampath = textField_1.getText();
+				  tfHam.setText(hamchooser.getSelectedFile().getAbsolutePath());
+				  hampath = tfHam.getText();
 				  hampath = hampath.replaceAll("\\\\","/" );
 				  hampath = hampath.replaceFirst("/","//" );
 			
@@ -211,8 +212,8 @@ public class GUI{
 			  public void actionPerformed(ActionEvent e) { 
 				  JFileChooser pamchooser = new JFileChooser();
 				  pamchooser.showOpenDialog(null);
-				  textField_2.setText(pamchooser.getSelectedFile().getAbsolutePath());
-				  spampath = textField_2.getText();
+				  tfSpam.setText(pamchooser.getSelectedFile().getAbsolutePath());
+				  spampath = tfSpam.getText();
 				  spampath = spampath.replaceAll("\\\\","/" );
 				  spampath = spampath.replaceFirst("/","//" );
 				  
@@ -223,167 +224,186 @@ public class GUI{
 			  }
 		});
 		
+		tfLoadManual = new JTextField();
+		tfLoadManual.setColumns(10);
+		
+		JButton btnLoadManual = new JButton("Browse ");
+		
+		JLabel lblLoadManual = new JLabel("Load:");
+		
 		
 //>>>>>>> branch 'master' of https://github.com/afcsr-iscteiulpt/ES1-2017-EIC1-34.git
 		
 		// ORGANIZAÇÃO DO LAYOUT ----------------------------------------------------------
 		
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
+		GroupLayout gl_lblFalsosPositivosAuto = new GroupLayout(lblFalsosPositivosAuto);
+		gl_lblFalsosPositivosAuto.setHorizontalGroup(
+			gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(gravarConfigAUTO, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-										.addComponent(gerarConfigAUTO, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE))
-									.addGap(23))
-								.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 									.addGap(18)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+									.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING)
 										.addComponent(label, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
-										.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
-									.addGap(24)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)))))
-						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createSequentialGroup()
+										.addComponent(lblFalsosNegativosAuto, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
+									.addGap(23)
+									.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.TRAILING)
+										.addComponent(tfFalsosNegativosAuto, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+										.addComponent(tfFalsosPositivosAuto, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)))
+								.addGroup(Alignment.TRAILING, gl_lblFalsosPositivosAuto.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+									.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.TRAILING)
+										.addComponent(gerarConfigAUTO, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+										.addComponent(gravarConfigAUTO, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE))
+									.addGap(30))))
+						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+						.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 285, GroupLayout.PREFERRED_SIZE)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 									.addGap(18)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblFalsosNegativos)
-										.addComponent(lblFalsosPositivos)
-										.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnGravar, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblFalsosNegativosManual)
+										.addComponent(lblFalsosPositivosManual)
+										.addComponent(tfPesoManual, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+										.addComponent(btnGravarManual, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE))
 									.addGap(24)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_contentPane.createSequentialGroup()
+									.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING)
+										.addComponent(tfFalsosPositivosManual, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+										.addComponent(tfFalsosNegativosManual, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 											.addGap(25)
-											.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+											.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.TRAILING)
 												.addComponent(gravarConfigMANUAL, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-												.addComponent(avaliarQualidadeMANUAL)))
-										.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)))
-								.addGroup(gl_contentPane.createSequentialGroup()
+												.addComponent(avaliarQualidadeMANUAL)))))
+								.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 									.addGap(26)
-									.addComponent(lblValor, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))))
-						.addComponent(separator_1, GroupLayout.DEFAULT_SIZE, 679, Short.MAX_VALUE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel)
+									.addComponent(lblValor, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
+									.addGap(40)
+									.addComponent(lblLoadManual, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(tfLoadManual, GroupLayout.PREFERRED_SIZE, 202, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(btnLoadManual, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)))
+							.addGap(22))
+						.addComponent(separator_1, GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+						.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblPathRules)
 								.addComponent(lblPathHamlog, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblPathSpamlog, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE))
 							.addGap(26)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(textField)
-								.addComponent(textField_1)
-								.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(tfRules)
+								.addComponent(tfHam)
+								.addComponent(tfSpam, GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING)
 								.addComponent(button, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
 								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
 								.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, 269, Short.MAX_VALUE)))
+							.addPreferredGap(ComponentPlacement.RELATED, 266, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
+		gl_lblFalsosPositivosAuto.setVerticalGroup(
+			gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 					.addGap(11)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPathRules)
+						.addComponent(tfRules, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnNewButton))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPathHamlog)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tfHam, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(button))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPathSpamlog)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(tfSpam, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(button_1))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 							.addComponent(lblValor)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
 								.addComponent(avaliarQualidadeMANUAL)
-								.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(tfPesoManual, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(gravarConfigMANUAL)
-								.addComponent(btnGravar))
-							.addGap(44)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblFalsosPositivos)
-								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnGravarManual)
+								.addComponent(gravarConfigMANUAL))
 							.addGap(18)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblFalsosNegativos)
-								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblFalsosPositivosManual)
+								.addComponent(tfFalsosPositivosManual, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblFalsosNegativosManual)
+								.addComponent(tfFalsosNegativosManual, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
+							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 221, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblLoadManual)
+							.addComponent(tfLoadManual, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(btnLoadManual)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 							.addGap(75)
 							.addComponent(gerarConfigAUTO)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(gravarConfigAUTO)
 							.addGap(33)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label))
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
+								.addComponent(label)
+								.addComponent(tfFalsosPositivosAuto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(label_1)))
-						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGroup(gl_lblFalsosPositivosAuto.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblFalsosNegativosAuto)
+								.addComponent(tfFalsosNegativosAuto, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_lblFalsosPositivosAuto.createSequentialGroup()
 							.addGap(18)
 							.addComponent(scrollPane_1, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 	
-		contentPane.setLayout(gl_contentPane);
+		lblFalsosPositivosAuto.setLayout(gl_lblFalsosPositivosAuto);
 	}
 
 	//--------------------------------------------------------------------------------	
 	
 	public JTextField getTextField() {
-		return textField;
+		return tfRules;
 	}
 
 	public void setTextField(JTextField textField) {
-		this.textField = textField;
+		this.tfRules = textField;
 	}
 
 	public JTextField getTextField_1() {
-		return textField_1;
+		return tfHam;
 	}
 
 	public void setTextField_1(JTextField textField_1) {
-		this.textField_1 = textField_1;
+		this.tfHam = textField_1;
 	}
 
 	public JTextField getTextField_2() {
-		return textField_2;
+		return tfSpam;
 	}
 
 	public void setTextField_2(JTextField textField_2) {
-		this.textField_2 = textField_2;
+		this.tfSpam = textField_2;
 	}
 
 	public DefaultListModel<String> getModel1() {
@@ -403,43 +423,43 @@ public class GUI{
 	}
 
 	public JTextField getTextField_3() {
-		return textField_3;
+		return tfFalsosPositivosManual;
 	}
 
 	public void setTextField_3(String text) {
-		textField_3.setText(text);
+		tfFalsosPositivosManual.setText(text);
 	}
 
 	public JTextField getTextField_4() {
-		return textField_4;
+		return tfFalsosNegativosManual;
 	}
 
 	public void setTextField_4(String text) {
-		textField_4.setText(text);
+		tfFalsosNegativosManual.setText(text);
 	}
 
 	public JTextField getTextField_5() {
-		return textField_5;
+		return tfFalsosPositivosAuto;
 	}
 
 	public void setTextField_5(String text) {
-		this.textField_5.setText(text);
+		this.tfFalsosPositivosAuto.setText(text);
 	}
 
 	public JTextField getTextField_6() {
-		return textField_6;
+		return tfFalsosNegativosAuto;
 	}
 
 	public void setTextField_6(String text) {
-		this.textField_6.setText(text);
+		this.tfFalsosNegativosAuto.setText(text);
 	}
 
 	public JTextField getTextField_7() {
-		return textField_7;
+		return tfPesoManual;
 	}
 
 	public void setTextField_7(String text) {
-		textField_7.setText(text);
+		tfPesoManual.setText(text);
 	}
 
 	

@@ -32,7 +32,7 @@ public class Rule {
 		return name + " " + valor;
 	}
 
-	public String toDysplay() {
+	public String toDisplay() {
 		return  name + ", valor: " + valor;
 	}
 }
