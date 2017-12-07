@@ -1,7 +1,6 @@
 package Daniel;
 
 import java.util.ArrayList;
-
 import Bruno.Rule;
 
 public class Avaliador {
@@ -12,10 +11,10 @@ public class Avaliador {
 	private int positive;
 	private int negative;
 	private Boolean spam;
-	
+
 	public Avaliador() {
 	}
-	
+
 	public Avaliador(ArrayList<Rule> rules, ArrayList<String[]> fileReport, boolean spam) {
 		replaceFields(rules, fileReport, spam);
 	}
@@ -60,4 +59,5 @@ public class Avaliador {
 		}
 		return spam ? negative : positive;
 	}
+	
 }

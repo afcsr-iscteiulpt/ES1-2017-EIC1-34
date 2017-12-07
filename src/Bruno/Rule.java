@@ -25,5 +25,14 @@ public class Rule {
 	public double getValor() {
 		return valor;
 	}
-	
+
+	//para depois utilizar-mos para guardar as regras actuais
+	@Override
+	public String toString() {
+		return name + " " + valor;
+	}
+
+	public String toDysplay() {
+		return  name + ", valor: " + valor;
+	}
 }

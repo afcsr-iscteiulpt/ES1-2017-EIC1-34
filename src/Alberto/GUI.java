@@ -1,8 +1,5 @@
 package Alberto;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -21,17 +18,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.JSeparator;
 import javax.swing.JList;
-import javax.swing.border.BevelBorder;
 import java.awt.Color;
-import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JScrollBar;
 import javax.swing.border.LineBorder;
 
 import Bruno.Cliente;
-
-import javax.swing.ListModel;
 
 public class GUI{
 	
@@ -192,8 +184,8 @@ public class GUI{
 			  
 				  try {
 						c.get_rules_list();
-						c.rules_cf_to_Jlist();
 						c.createRulesAuto();
+						c.rules_cf_to_Jlist();
 					} catch (FileNotFoundException e1) {}
 				  
 			  }
