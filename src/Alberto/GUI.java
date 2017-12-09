@@ -44,7 +44,8 @@ public class GUI{
 
 	private String rulespath; 
 	private String hampath; 
-	private String spampath;  		
+	private String spampath; 
+	private String Loadpath;
 	private JTextField tfLoadManual;
 	
 	public GUI(Cliente c) {   
@@ -116,6 +117,12 @@ public class GUI{
 		
 		
 		JButton gravarConfigMANUAL = new JButton("Gravar Configuração");
+		gravarConfigMANUAL.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				c.save_conf();
+			}
+			
+		});
 		
 		JLabel lblFalsosPositivosManual = new JLabel("Falsos Positivos");
 		tfFalsosPositivosManual = new JTextField();
@@ -126,6 +133,27 @@ public class GUI{
 		tfFalsosNegativosManual = new JTextField();
 		tfFalsosNegativosManual.setBackground(new Color(255, 182, 193));
 		tfFalsosNegativosManual.setColumns(10);
+
+		JButton btnLoadManual = new JButton("Browse ");
+		btnLoadManual.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent e) { 
+				  JFileChooser ruleschooser = new JFileChooser();
+				  ruleschooser.showOpenDialog(null);
+				  tfLoadManual.setText(ruleschooser.getSelectedFile().getAbsolutePath());
+				  Loadpath = tfLoadManual.getText();
+				  Loadpath = Loadpath.replaceAll("\\\\","/" );
+				  Loadpath = Loadpath.replaceFirst("/","//" );
+			  
+				  try {
+					  	c.load_conf();
+						c.rules_cf_to_Jlist();
+					} catch (FileNotFoundException e1) {}
+				  
+			  }
+		});
+		
+		
+		JLabel lblLoadManual = new JLabel("Load:");
 		
 		//--------------------------------------------------------------------------------
 		JSeparator separator_1 = new JSeparator();
@@ -148,7 +176,12 @@ public class GUI{
 		});
 		
 		JButton gravarConfigAUTO = new JButton("Gravar Configuração");
-		//TODO listener que cria ficheiro com pesos da configuracao normal
+		gravarConfigAUTO.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				c.save_conf();
+			}
+			
+		});
 		
 		JLabel label = new JLabel("Falsos Positivos");
 		tfFalsosPositivosAuto = new JTextField();
@@ -227,9 +260,6 @@ public class GUI{
 		tfLoadManual = new JTextField();
 		tfLoadManual.setColumns(10);
 		
-		JButton btnLoadManual = new JButton("Browse ");
-		
-		JLabel lblLoadManual = new JLabel("Load:");
 		
 		
 //>>>>>>> branch 'master' of https://github.com/afcsr-iscteiulpt/ES1-2017-EIC1-34.git
@@ -473,6 +503,10 @@ public class GUI{
 
 	public String getRulespath() {
 		return rulespath;
+	}
+	
+	public String getLoadpath() {
+		return Loadpath;
 	}
 
 	public void setRulespath(String rulespath) {

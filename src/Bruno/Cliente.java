@@ -1,8 +1,17 @@
 package Bruno;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
+import javax.swing.JFileChooser;
 
 import Alberto.GUI;
 import Daniel.Avaliador;
@@ -60,7 +69,7 @@ public class Cliente {
 	public void rules_cf_to_Jlist() throws FileNotFoundException{
 		gui.model1.clear();
 		for(int i = 0; i < rules_cf.size(); i++ ){
-			gui.model1.addElement(rules_cf.get(i).getName());
+			gui.model1.addElement(rules_cf.get(i).toDisplay());
 		}
 		gui.model2.clear();
 		for(int i = 0; i < rules_auto.size(); i++ ){
@@ -107,6 +116,35 @@ public class Cliente {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * salva a configuração das regras num novo ficheiro
+	 */
+	public void save_conf(){
+		try {
+			JFileChooser chooser = new JFileChooser();
+			   int status = chooser.showSaveDialog(null);
+			   
+			   File file = chooser.getSelectedFile();
+			   PrintWriter out = new PrintWriter(file);
+
+			   if (status == JFileChooser.APPROVE_OPTION){ 
+			      
+				   for(int i = 0; i < rules_cf.size(); i++){
+					   out.println(rules_cf.get(i).getName() + "	" + rules_cf.get(i).getValor());		           
+				   }
+			      out.close();
+			   }
+			
+		} catch (IOException e) {}
+	}
+	
+	public void load_conf(){
+		rules_cf = File_Scanner.Scan_Saved_Conf(gui.getLoadpath());
+		rules_auto = rules_cf;
+	}
+	
+	
 	
 	public ArrayList<Rule> getRules_cf(){
 		return rules_cf;

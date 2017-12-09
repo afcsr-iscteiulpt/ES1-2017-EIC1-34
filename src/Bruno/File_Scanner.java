@@ -50,6 +50,32 @@ public class File_Scanner {
 	}
 	
 	/**
+	 * este mï¿½todo faz o scan do ficheiro da configuração previamente salvada
+	 * @param path
+	 * @return
+	 */
+	public static ArrayList<Rule> Scan_Saved_Conf(String path){
+		ArrayList<Rule> saved_conf = new ArrayList<Rule>();
+		try {
+			Scanner sc;
+			sc = new Scanner(new File(path));
+			while (sc.hasNextLine()) {
+				String line = sc.nextLine();
+				String[] parts = line.split("	");
+				String Nome = parts[0];
+				Double Valor = Double.parseDouble(parts[1]);
+				Rule rule = new Rule(Nome, Valor);
+				saved_conf.add(rule);
+				
+			}
+			sc.close();
+		} catch (FileNotFoundException e) {}
+		
+		return saved_conf;
+	}
+	
+	
+	/**
 	 * avalia os resultados do JMetal
 	 * @throws FileNotFoundException 
 	 */
