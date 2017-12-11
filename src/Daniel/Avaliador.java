@@ -11,10 +11,18 @@ public class Avaliador {
 	private int positive;
 	private int negative;
 	private Boolean spam;
-
+	
+	/**
+	 * Construtor do avaliador sem parametros
+	 */
 	public Avaliador() {
 	}
-
+	/**
+	 * Construtor do avaliador
+	 * @param rules
+	 * @param fileReport
+	 * @param spam
+	 */
 	public Avaliador(ArrayList<Rule> rules, ArrayList<String[]> fileReport, boolean spam) {
 		replaceFields(rules, fileReport, spam);
 	}
