@@ -40,11 +40,15 @@ public class Cliente {
 		this.avaliador = new Avaliador();
 		this.antiSpamAutoConfigurator = new AntiSpamFilterAutomaticConfiguration();
 	}
-	
+	/**
+	 * Método para guardar a Lista de regras nova
+	 */
 	public void get_rules_list() {
 		rules_cf = createRulesList();
 	}
-	
+	/**
+	 * Método para guardar a lista de regras novas para a geração automatica
+	 */
 	public void createRulesAuto() {
 		rules_auto = createRulesList();
 	}
@@ -57,15 +61,24 @@ public class Cliente {
 	public ArrayList<Rule> createRulesList(){
 		return File_Scanner.Scan_Rules_cf(gui.getRulespath());
 	}
-
+	/**
+	 * Método auxiliar para fazer scan e receber a lista de ham
+	 * @throws FileNotFoundException
+	 */
 	public void get_ham_list() throws FileNotFoundException{
 		ham = File_Scanner.Scan_Spam_or_Ham(gui.getHampath());
 	}
-	
+	/**
+	 * Método auxiliar para fazer scan e receber a lista de spam
+	 * @throws FileNotFoundException
+	 */
 	public void get_spam_list() throws FileNotFoundException{
 		spam = File_Scanner.Scan_Spam_or_Ham(gui.getSpampath());
 	}
-	
+	/**
+	 * Método auxiliar para fazer scan e receber a lista de regras
+	 * @throws FileNotFoundException
+	 */
 	public void rules_cf_to_Jlist() throws FileNotFoundException{
 		gui.model1.clear();
 		for(int i = 0; i < rules_cf.size(); i++ ){
@@ -76,17 +89,27 @@ public class Cliente {
 			gui.model2.addElement(rules_auto.get(i).toDisplay());
 		}
 	}
-	
+	/**
+	 *  Mostrar peso da regra
+	 * @param list
+	 * @param index
+	 */
 	public void display_peso(ArrayList<Rule> list, int index){
 //		System.out.println(index);
 //		gui.setTextField_7("" + rules_cf.get(gui.getIndex()).getValor());
 		gui.setTextField_7("" + list.get(index).getValor());
 	}
-	
+	/**
+	 * Mudar o peso da regra
+	 * @param index
+	 * @param valor
+	 */
 	public void change_peso(int index, double valor){
 		rules_cf.get(index).setValor(valor);
 	}
-	
+	/**
+	 * Começa a avaliar as regras
+	 */
 	public void start_Avaliador(){
 		avaliador.replaceFields(rules_cf, spam, true);
 		falsos_pos_man = avaliador.avaliar();
@@ -118,7 +141,7 @@ public class Cliente {
 	}
 	
 	/**
-	 * salva a configura��o das regras num novo ficheiro
+	 * salva a configura��o das regras num novo ficheiro
 	 */
 	public void save_conf(){
 		try {
@@ -145,19 +168,32 @@ public class Cliente {
 	}
 	
 	
-	
+	/**
+	 * função que devolve as rules
+	 * @return
+	 */
 	public ArrayList<Rule> getRules_cf(){
 		return rules_cf;
 	}
-	
+	 
+	/**
+	 * função que devolve o ham
+	 * @return
+	 */
 	public ArrayList<String[]> getHam(){
 		return ham;
 	}
-	
+	/**
+	 * função que devolve o spam
+	 * @return
+	 */
 	public ArrayList<String[]> getSpam(){
 		return spam;
 	}
-	
+	/**
+	 * função que devolve o rules
+	 * @return
+	 */
 	public ArrayList<Rule> getRules_auto() {
 		return rules_auto;
 	}
