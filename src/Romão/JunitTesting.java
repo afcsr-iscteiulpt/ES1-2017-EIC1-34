@@ -23,7 +23,7 @@ import Alberto.GUI;
 import Bruno.Cliente;
 import Bruno.File_Scanner;
 import Bruno.Rule;
-import Daniel.Avaliador;
+import Daniel.Avaliador; 
 
 public class JunitTesting {
 

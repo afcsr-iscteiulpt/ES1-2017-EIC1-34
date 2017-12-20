@@ -74,7 +74,7 @@ public class Cliente {
 	 */
 	public void get_spam_list() throws FileNotFoundException{
 		spam = File_Scanner.Scan_Spam_or_Ham(gui.getSpampath());
-	}
+	} 
 	/**
 	 * Método auxiliar para fazer scan e receber a lista de regras
 	 * @throws FileNotFoundException
