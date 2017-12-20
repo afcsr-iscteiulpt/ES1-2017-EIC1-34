@@ -26,7 +26,7 @@ import Bruno.Rule;
 import Daniel.Avaliador;
 
 public class JunitTesting {
-	
+
 	@Test
 	public void avaliartesttrue() {
 		ArrayList<Rule> rules = File_Scanner.Scan_Rules_cf("teste_file.cf");
@@ -52,63 +52,18 @@ public class JunitTesting {
 	}
 	
 
-	
-	@Test
-	public void createRulesList_Test_Null(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha o ficheiro rules");
-		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-//		while(c.gui.getRulespath() == null){
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		ArrayList<Rule> rules = c.createRulesList();
-		assertNull(rules);
-	}
-
 	@Test
 	public void createRulesList_Test_NotNull(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha o ficheiro rules");
 		Cliente c = new Cliente();
 		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-//			while(c.gui.getRulespath() == null){
-//				try {
-//					Thread.sleep(10);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//		}
 		ArrayList<Rule> rules = c.createRulesList();
 		assertNotNull(rules);
 	}
 	
 	@Test
 	public void get_ham_list_test_NotNull(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha o ficheiro ham");
 		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
 		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-//			while(c.gui.getHampath() == null){
-//				try {
-//					Thread.sleep(10);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//		}
 			try {
 				c.get_ham_list();
 			} catch (FileNotFoundException e) {
@@ -117,73 +72,12 @@ public class JunitTesting {
 			}
 		assertNotNull(c.getHam());
 	}
-	
-	@Test
-	public void get_ham_list_test_Null(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha o ficheiro ham");
-		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-//			while(c.gui.getHampath() == null){
-//				try {
-//					Thread.sleep(10);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//		}
-			try {
-				c.get_ham_list();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		assertNull(c.getHam());
-	}
-	
-	@Test
-	public void get_spam_list_test_Null(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha o ficheiro spam");
-		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-//			while(c.gui.getSpampath() == null){
-//				try {
-//					Thread.sleep(10);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//		}
-			try {
-				c.get_spam_list();
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		assertNull(c.getSpam());
-	}
+
 	
 	@Test
 	public void get_spam_list_test_NotNull(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha o ficheiro spam");
 		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
 		c.gui.setSpampath("spam.log");
-//			while(c.gui.getSpampath() == null){
-//				try {
-//					Thread.sleep(10);
-//				} catch (InterruptedException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//		}
 			try {
 				c.get_spam_list();
 			} catch (FileNotFoundException e) {
@@ -202,75 +96,23 @@ public class JunitTesting {
 	}
 	
 	@Test
-	public void display_peso_test_2(){
-		Cliente c = new Cliente();
-		ArrayList<Rule> rules_array = File_Scanner.Scan_Rules_cf("rules.cf");
-		c.display_peso(rules_array, 1);
-		assertEquals("0.1", c.gui.getTextField_7().getText());
-	}
-	
-	@Test
 	public void change_peso_test(){
 		Cliente c = new Cliente();
 		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
 		c.gui.setTextField("rules.cf");
 		c.get_rules_list();
-//		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha o ficheiro rules");
-//		while(c.gui.getRulespath() == null){
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
 		ArrayList<Rule> rules = c.createRulesList();
 		c.change_peso(1, 0.1);
-		assertEquals(0.1, c.getRules_cf().get(1).getValor(), 0.0);
-	}
-	
-	@Test
-	public void change_peso_test_fail(){
-		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-		c.get_rules_list();
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha o ficheiro rules");
-//		while(c.gui.getRulespath() == null){
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		ArrayList<Rule> rules = c.createRulesList();
-		c.change_peso(1, 0.2);
 		assertEquals(0.1, c.getRules_cf().get(1).getValor(), 0.0);
 	}
 
 
 	@Test
 	public void start_avaliador_test_true(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha os 3 ficheiros");
 		Cliente c = new Cliente();
 		c.gui.setRulespath("rules.cf");
 		c.gui.setHampath("ham.log");
 		c.gui.setSpampath("spam.log");
-//		while(c.gui.getRulespath() == null || c.gui.getSpampath() == null || c.gui.getHampath() == null){
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
 		try { 
 			c.get_spam_list();
 			c.get_ham_list();
@@ -284,77 +126,15 @@ public class JunitTesting {
 		assertEquals(0, c.falsos_neg_man);
 	}
 	
-	@Test
-	public void start_avaliador_test_false(){
-			JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Ponha os 3 ficheiros");
-		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-//		while(c.gui.getRulespath() == null || c.gui.getSpampath() == null || c.gui.getHampath() == null){
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		try {
-			c.get_spam_list();
-			c.get_ham_list();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		c.get_rules_list();
-		c.start_Avaliador();
-		assertEquals(300, c.falsos_pos_man);
-		assertEquals(2, c.falsos_neg_man);
-	}
-	
 	
 	@Test
 	public void load_conf_test_not_null(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Faça load de uma configuração");
 		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
 		c.gui.setLoadpath("llo");
-//		while(c.gui.getLoadpath() == null){
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
 		c.load_conf();
 		assertNotNull(c.rules_cf);
 	}
 	
-	@Test
-	public void load_conf_test_null(){
-		JOptionPane panel = new JOptionPane();
-//		panel.showMessageDialog(null, "Faça load de uma configuração");
-		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-		c.gui.setLoadpath("llo");
-//		while(c.gui.getLoadpath() == null){
-//			try {
-//				Thread.sleep(10);
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-		c.load_conf();
-		assertNull(c.rules_cf);
-	}
 	
 	@Test
 	public void decifer_results_test(){
@@ -367,16 +147,6 @@ public class JunitTesting {
 	}
 	}
 	
-	@Test
-	public void decifer_results_test_null(){
-	File_Scanner scanner = new File_Scanner();
-	try {
-		assertNull(scanner.deciferResults("rules.cf"));
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	}
 	
 	@Test
 	public void serchBestConfig_tests_not_null(){
@@ -389,16 +159,6 @@ public class JunitTesting {
 		}
 	}
 	
-	@Test
-	public void serchBestConfig_tests_null(){
-		File_Scanner scanner = new File_Scanner();
-		try {
-			assertNull(scanner.serchBestConfig());
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	@Test
 	public void save_conf_test(){
@@ -412,18 +172,9 @@ public class JunitTesting {
 			while(c.gui.getRulespath() == null){
 				try {
 					Thread.sleep(10);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				} catch (InterruptedException e) {}
 		}
 		c.save_conf();
-	}
-	
-	@Test
-	public void get_rulesauto_test_not_null(){
-		Cliente c = new Cliente();
-		assertNotNull(c.getRules_auto());
 	}
 	
 	@Test
@@ -451,6 +202,26 @@ public class JunitTesting {
 		File_Scanner s = new File_Scanner();
 		s.Scan_Saved_Conf("llo");
 		s.Scan_Saved_Conf("TesteCoverage/rules.cf");
+	}
+	
+	@Test
+	public void autoconfig_test(){
+		Cliente c = new Cliente();
+		c.gui.setRulespath("rules.cf");
+		c.gui.setHampath("ham.log");
+		c.gui.setSpampath("spam.log");
+		c.gui.setLoadpath("llo");
+		c.gui.setTextField("rules.cf");
+		c.createRulesAuto();
+		c.get_rules_list();
+		try {
+			c.get_ham_list();
+			c.get_spam_list();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		c.start_AutoConfig();
 	}
 	
 }

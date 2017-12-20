@@ -137,7 +137,7 @@ public class Cliente {
 			gui.setTextField_5("" + d[0]);
 			gui.setTextField_6("" + d[1]);
 			rules_cf_to_Jlist();
-		} catch (IOException e) {
+		} catch (IOException e) { 
 			e.printStackTrace();
 		}
 	}
