@@ -48,7 +48,7 @@ public class GUI{
 	private String Loadpath;
 	private JTextField tfLoadManual;
 	
-	public GUI(Cliente c) {   
+	public GUI(Cliente c) {    
 		
 		frame = new JFrame("Spam Filter Configurator");
 		frame.setVisible(true);
@@ -91,7 +91,7 @@ public class GUI{
 			}
 		});
 		
-		
+		 
 		JLabel lblValor = new JLabel("Peso:");
 		tfPesoManual = new JTextField();
 		tfPesoManual.setColumns(10);
@@ -102,6 +102,7 @@ public class GUI{
 			public void actionPerformed(ActionEvent e) {
 				index = list.getSelectedIndex();
 				c.change_peso(index,  Double.parseDouble(tfPesoManual.getText()));
+		
 				
 			}
 		});
@@ -416,8 +417,8 @@ public class GUI{
 		return tfRules;
 	}
 
-	public void setTextField(JTextField textField) {
-		this.tfRules = textField;
+	public void setTextField(String X) {
+		this.tfRules.setText(X);
 	}
 
 	public JTextField getTextField_1() {
@@ -509,6 +510,10 @@ public class GUI{
 		return Loadpath;
 	}
 
+	public void setLoadpath(String loadpath) {
+		this.Loadpath = loadpath;
+	}
+	
 	public void setRulespath(String rulespath) {
 		this.rulespath = rulespath;
 	}

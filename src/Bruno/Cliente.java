@@ -19,18 +19,18 @@ import antiSpamFilter.AntiSpamFilterAutomaticConfiguration;
  
 public class Cliente {
 
-	private AntiSpamFilterAutomaticConfiguration antiSpamAutoConfigurator;
-	private  Avaliador avaliador;
+	public AntiSpamFilterAutomaticConfiguration antiSpamAutoConfigurator;
+	public  Avaliador avaliador;
 	
-	private GUI gui;
+	public GUI gui;
 	
-	private ArrayList<Rule> rules_cf;
+	public ArrayList<Rule> rules_cf;
 	private ArrayList<Rule> rules_auto;
-	private ArrayList<String[]> spam;
+	public ArrayList<String[]> spam;
 	private ArrayList<String[]> ham;
 	
-	private int falsos_pos_man;
-	private int falsos_neg_man;
+	public int falsos_pos_man;
+	public int falsos_neg_man;
 	
 	/**
 	 * inicializador do cliente
@@ -119,6 +119,8 @@ public class Cliente {
 		
 		gui.setTextField_3("" + falsos_pos_man);
 		gui.setTextField_4("" + falsos_neg_man);
+		System.out.println("falsos_neg: " + falsos_neg_man);
+		System.out.println("falsos_pos: " + falsos_pos_man);
 		
 	}
 	
@@ -200,6 +202,8 @@ public class Cliente {
 	
 	public static void main(String[] arg) throws IOException  {
 		Cliente c = new Cliente();
-		c.getHam();
+		/**
+//		c.getHam();
+		*/
 	}
 }

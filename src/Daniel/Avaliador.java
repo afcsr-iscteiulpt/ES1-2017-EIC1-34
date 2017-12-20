@@ -5,12 +5,12 @@ import Bruno.Rule;
 
 public class Avaliador {
 
-	private ArrayList<Rule> rules;
+	public ArrayList<Rule> rules;
 	private ArrayList<String[]> log;
 
-	private int positive;
-	private int negative;
-	private Boolean spam;
+	public int positive;
+	public int negative;
+	public Boolean spam;
 	
 	/**
 	 * Construtor do avaliador sem parametros

@@ -50,19 +50,19 @@ public class File_Scanner {
 	}
 	
 	/**
-	 * este mï¿½todo faz o scan do ficheiro da configuração previamente salvada
+	 * este mï¿½todo faz o scan do ficheiro da configuraï¿½ï¿½o previamente salvada
 	 * @param path
 	 * @return
 	 */
 	public static ArrayList<Rule> Scan_Saved_Conf(String path){
 		ArrayList<Rule> saved_conf = new ArrayList<Rule>();
-		try {
+		try { 
 			Scanner sc;
 			sc = new Scanner(new File(path));
 			while (sc.hasNextLine()) {
 				String line = sc.nextLine();
 				String[] parts = line.split("	");
-				String Nome = parts[0];
+				String Nome = parts[0]; 
 				Double Valor = Double.parseDouble(parts[1]);
 				Rule rule = new Rule(Nome, Valor);
 				saved_conf.add(rule);
@@ -113,7 +113,6 @@ public class File_Scanner {
 			finalConf.get(i).setValor(Double.parseDouble(scan.next()));
 		}
 		scan.close();
-		
 		return finalConf;
 	}
 	
@@ -131,6 +130,7 @@ public class File_Scanner {
 			results[1] = Double.parseDouble(scan.next());
 			config.add(results);
 		}
+		
 
 		int best = 0;
 		for (int i = 1; i < config.size(); i++) {
@@ -139,6 +139,8 @@ public class File_Scanner {
 			}
 		}
 		scan.close();
+		System.out.println(config);
+		System.out.println(config.get(best));
 		return config.get(best); 
 	}
 
