@@ -1,6 +1,6 @@
-Identificação da turma (ex: EIC1)
+Identificação da turma - EIC1
 
-Identificação do grupo (ex: Grupo 34)
+Identificação do grupo - Grupo 34
 
 Identificação do número, nome e papel de cada membro do grupo:
 
@@ -12,6 +12,6 @@ Identificação do número, nome e papel de cada membro do grupo:
    
    73298, João Romão, Quality Manager
 
-Identificação da variante do projeto desenvolvida (ex: AntiSpamConfigurationForProfessionalMailbox)
+Identificação da variante do projeto desenvolvida - AntiSpamConfigurationForProfessionalMailbox
 
 Link para um vídeo no youtube com a demonstração da aplicação final desenvolvida (ex: http://...)

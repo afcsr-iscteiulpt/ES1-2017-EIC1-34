@@ -1,4 +1,4 @@
-package Romão;
+
 
 import static org.junit.Assert.*;
 
@@ -19,13 +19,13 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import Alberto.GUI;
-import Bruno.Cliente;
-import Bruno.File_Scanner;
-import Bruno.Rule;
-import Daniel.Avaliador; 
+import patch_1.GUI;
+import patch_1.Cliente;
+import patch_1.File_Scanner;
+import patch_1.Rule;
+import patch_1.Avaliador; 
 
-public class JunitTesting {
+public class JUnitTesting {
 
 	@Test
 	public void avaliartesttrue() {

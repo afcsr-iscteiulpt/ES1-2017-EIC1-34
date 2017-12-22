@@ -1,7 +1,6 @@
-package Daniel;
+package patch_1;
 
 import java.util.ArrayList;
-import Bruno.Rule;
 
 public class Avaliador {
 

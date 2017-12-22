@@ -1,4 +1,4 @@
-package Bruno;
+package patch_1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,8 +13,6 @@ import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
 
-import Alberto.GUI;
-import Daniel.Avaliador;
 import antiSpamFilter.AntiSpamFilterAutomaticConfiguration;
  
 public class Cliente {
@@ -105,7 +103,10 @@ public class Cliente {
 	 * @param valor
 	 */
 	public void change_peso(int index, double valor){
-		rules_cf.get(index).setValor(valor);
+		try {
+			rules_cf.get(index).setValor(valor);
+			rules_cf_to_Jlist();
+		} catch (FileNotFoundException e) {}
 	}
 	/**
 	 * Começa a avaliar as regras
