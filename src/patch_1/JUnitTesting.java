@@ -30,7 +30,7 @@ public class JUnitTesting {
 	@Test
 	public void createRulesList_Test_NotNull(){
 		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
+		c.get_gui().setRulespath("rules.cf");
 		ArrayList<Rule> rules = c.createRulesList();
 		assertNotNull(rules);
 	}
@@ -38,7 +38,7 @@ public class JUnitTesting {
 	@Test
 	public void get_ham_list_test_NotNull(){
 		Cliente c = new Cliente();
-		c.gui.setHampath("ham.log");
+		c.get_gui().setHampath("ham.log");
 			try {
 				c.get_ham_list();
 			} catch (FileNotFoundException e) {
@@ -52,7 +52,7 @@ public class JUnitTesting {
 	@Test
 	public void get_spam_list_test_NotNull(){
 		Cliente c = new Cliente();
-		c.gui.setSpampath("spam.log");
+		c.get_gui().setSpampath("spam.log");
 			try {
 				c.get_spam_list();
 			} catch (FileNotFoundException e) {
@@ -67,14 +67,14 @@ public class JUnitTesting {
 		Cliente c = new Cliente();
 		ArrayList<Rule> rules_array = File_Scanner.Scan_Rules_cf("rules.cf");
 		c.display_peso(rules_array, 1);
-		assertEquals("0.0", c.gui.getTextField_7().getText());
+		assertEquals("0.0", c.get_gui().getTextField_7().getText());
 	}
 	
 	@Test
 	public void change_peso_test(){
 		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setTextField("rules.cf");
+		c.get_gui().setRulespath("rules.cf");
+		c.get_gui().setTextField("rules.cf");
 		c.get_rules_list();
 		c.createRulesAuto();
 		ArrayList<Rule> rules = c.createRulesList();
@@ -86,9 +86,9 @@ public class JUnitTesting {
 	@Test
 	public void start_avaliador_test_true(){
 		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
+		c.get_gui().setRulespath("rules.cf");
+		c.get_gui().setHampath("ham.log");
+		c.get_gui().setSpampath("spam.log");
 		try { 
 			c.get_spam_list();
 			c.get_ham_list();
@@ -98,17 +98,17 @@ public class JUnitTesting {
 		}
 		c.get_rules_list();
 		c.start_Avaliador();
-		assertEquals(239, c.falsos_pos_man);
-		assertEquals(0, c.falsos_neg_man);
+		assertEquals(239, c.getFalsos_pos_man());
+		assertEquals(0, c.getFalsos_neg_man());
 	}
 	
 	
 	@Test
 	public void load_conf_test_not_null(){
 		Cliente c = new Cliente();
-		c.gui.setLoadpath("llo");
+		c.get_gui().setLoadpath("llo");
 		c.load_conf();
-		assertNotNull(c.rules_cf);
+		assertNotNull(c.getRules_cf());
 	}
 	
 	
@@ -145,7 +145,7 @@ public class JUnitTesting {
 //		c.gui.setHampath("ham.log");
 //		c.gui.setSpampath("spam.log");
 //		c.gui.setLoadpath("llo");
-			while(c.gui.getRulespath() == null){
+			while(c.get_gui().getRulespath() == null){
 				try {
 					Thread.sleep(10);
 				} catch (InterruptedException e) {}
@@ -183,11 +183,11 @@ public class JUnitTesting {
 	@Test
 	public void autoconfig_test(){
 		Cliente c = new Cliente();
-		c.gui.setRulespath("rules.cf");
-		c.gui.setHampath("ham.log");
-		c.gui.setSpampath("spam.log");
-		c.gui.setLoadpath("llo");
-		c.gui.setTextField("rules.cf");
+		c.get_gui().setRulespath("rules.cf");
+		c.get_gui().setHampath("ham.log");
+		c.get_gui().setSpampath("spam.log");
+		c.get_gui().setLoadpath("llo");
+		c.get_gui().setTextField("rules.cf");
 		c.createRulesAuto();
 		c.get_rules_list();
 		try {

@@ -12,18 +12,18 @@ import antiSpamFilter.AntiSpamFilterAutomaticConfiguration;
  
 public class Cliente {
 
-	public AntiSpamFilterAutomaticConfiguration antiSpamAutoConfigurator;
-	public  Avaliador avaliador;
+	private AntiSpamFilterAutomaticConfiguration antiSpamAutoConfigurator;
+	private Avaliador avaliador;
 	
-	public GUI gui;
+	private GUI gui;
 	
-	public ArrayList<Rule> rules_cf;
+	private ArrayList<Rule> rules_cf;
 	private ArrayList<Rule> rules_auto;
-	public ArrayList<String[]> spam;
+	private ArrayList<String[]> spam;
 	private ArrayList<String[]> ham;
 	
-	public int falsos_pos_man;
-	public int falsos_neg_man;
+	private int falsos_pos_man;
+	private int falsos_neg_man;
 	
 	/**
 	 * inicializador do cliente
@@ -73,13 +73,13 @@ public class Cliente {
 	 * @throws FileNotFoundException
 	 */
 	public void rules_cf_to_Jlist() throws FileNotFoundException{
-		gui.model1.clear();
+		gui.getModel1().clear();
 		for(int i = 0; i < rules_cf.size(); i++ ){
-			gui.model1.addElement(rules_cf.get(i).toDisplay());
+			gui.getModel1().addElement(rules_cf.get(i).toDisplay());
 		}
-		gui.model2.clear();
+		gui.getModel2().clear();
 		for(int i = 0; i < rules_auto.size(); i++ ){
-			gui.model2.addElement(rules_auto.get(i).toDisplay());
+			gui.getModel2().addElement(rules_auto.get(i).toDisplay());
 		}
 	}
 	/**
@@ -196,7 +196,23 @@ public class Cliente {
 		return rules_auto;
 	}
 	
+	public GUI get_gui(){
+		return gui;
+	}
+	
 	public static void main(String[] arg) throws IOException  {
 		Cliente c = new Cliente();
+	}
+	public int getFalsos_pos_man() {
+		return falsos_pos_man;
+	}
+	public void setFalsos_pos_man(int falsos_pos_man) {
+		this.falsos_pos_man = falsos_pos_man;
+	}
+	public int getFalsos_neg_man() {
+		return falsos_neg_man;
+	}
+	public void setFalsos_neg_man(int falsos_neg_man) {
+		this.falsos_neg_man = falsos_neg_man;
 	}
 }

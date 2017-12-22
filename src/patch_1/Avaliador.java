@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class Avaliador {
 
-	public ArrayList<Rule> rules;
+	private ArrayList<Rule> rules;
 	private ArrayList<String[]> log;
 
-	public int positive;
-	public int negative;
-	public Boolean spam;
+	private int positive;
+	private int negative;
+	private Boolean spam;
 	
 	/**
 	 * Construtor do avaliador sem parametros

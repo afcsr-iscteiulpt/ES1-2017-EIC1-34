@@ -30,8 +30,8 @@ public class GUI{
 	private JTextField tfRules;
 	private JTextField tfHam;
 	private JTextField tfSpam;
-	public DefaultListModel<String> model1;
-	public DefaultListModel<String> model2;
+	private DefaultListModel<String> model1;
+	private DefaultListModel<String> model2;
 	private JTextField tfFalsosPositivosManual;
 	private JTextField tfFalsosNegativosManual;
 	private JTextField tfFalsosPositivosAuto;
