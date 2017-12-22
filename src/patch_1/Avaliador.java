@@ -16,6 +16,7 @@ public class Avaliador {
 	 */
 	public Avaliador() {
 	}
+	
 	/**
 	 * Construtor do avaliador
 	 * @param rules

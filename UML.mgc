@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="patch_1.Cliente" x="574" y="35">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="patch_1.Rule"
+            endpointName="rules_auto" kind="Simple">
+            <Point x="680" y="540"/>
+        </Association>
+        <Association
+            destinationClassName="antiSpamFilter.AntiSpamFilterAutomaticConfiguration"
+            endpointName="antiSpamAutoConfigurator" kind="Simple">
+            <Point x="866" y="166"/>
+        </Association>
+        <Association destinationClassName="patch_1.Rule"
+            endpointName="rules_cf" kind="Simple">
+            <Point x="542" y="398"/>
+        </Association>
+        <Association destinationClassName="patch_1.Avaliador"
+            endpointName="avaliador" kind="Simple"/>
+        <Association destinationClassName="patch_1.GUI"
+            endpointName="gui" kind="Simple">
+            <Point x="1206" y="151"/>
+        </Association>
+        <Communication destinationClassName="patch_1.GUI"/>
+        <Communication destinationClassName="patch_1.Avaliador"/>
+        <Communication destinationClassName="patch_1.Rule"/>
+        <Communication destinationClassName="antiSpamFilter.AntiSpamFilterAutomaticConfiguration"/>
+        <Communication destinationClassName="patch_1.File_Scanner"/>
+    </Class>
+    <Class name="patch_1.GUI" x="1105" y="297">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="patch_1.Avaliador" x="71" y="107">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="patch_1.Rule"
+            endpointName="rules" kind="Simple"/>
+        <Communication destinationClassName="patch_1.Rule"/>
+        <Communication destinationClassName="patch_1.File_Scanner"/>
+    </Class>
+    <Class name="patch_1.Rule" x="194" y="497">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="antiSpamFilter.AntiSpamFilterAutomaticConfiguration"
+        x="770" y="369">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="antiSpamFilter.AntiSpamFilterProblem" x="620" y="585">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="patch_1.Cliente"
+            endpointName="cliente" kind="Simple"/>
+        <Association destinationClassName="patch_1.Rule"
+            endpointName="rules" kind="Simple">
+            <Point x="247" y="618"/>
+        </Association>
+        <Communication destinationClassName="patch_1.Cliente"/>
+        <Communication destinationClassName="patch_1.Rule"/>
+        <Communication destinationClassName="patch_1.Avaliador"/>
+    </Class>
+    <Class name="patch_1.File_Scanner" x="101" y="339">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="patch_1.Rule"/>
+    </Class>
+</ClassDiagram>
