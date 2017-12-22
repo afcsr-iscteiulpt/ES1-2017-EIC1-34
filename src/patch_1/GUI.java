@@ -118,7 +118,7 @@ public class GUI{
 		JButton gravarConfigMANUAL = new JButton("Gravar Configuração");
 		gravarConfigMANUAL.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				c.save_conf();
+				c.save_conf_manual();
 			}
 			
 		});
@@ -177,7 +177,7 @@ public class GUI{
 		JButton gravarConfigAUTO = new JButton("Gravar Configuração");
 		gravarConfigAUTO.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				c.save_conf();
+				c.save_conf_auto();
 			}
 			
 		});

@@ -150,7 +150,8 @@ public class JUnitTesting {
 					Thread.sleep(10);
 				} catch (InterruptedException e) {}
 		}
-		c.save_conf();
+		c.save_conf_manual();
+		c.save_conf_auto();
 	}
 	
 	@Test

@@ -141,7 +141,7 @@ public class Cliente {
 	/**
 	 * salva a configura��o das regras num novo ficheiro
 	 */
-	public void save_conf(){
+	public void save_conf_manual(){
 		try {
 			JFileChooser chooser = new JFileChooser();
 			   int status = chooser.showSaveDialog(null);
@@ -153,6 +153,25 @@ public class Cliente {
 			      
 				   for(int i = 0; i < rules_cf.size(); i++){
 					   out.println(rules_cf.get(i).getName() + "	" + rules_cf.get(i).getValor());		           
+				   }
+			      out.close();
+			   }
+			
+		} catch (IOException e) {}
+	}
+	
+	public void save_conf_auto(){
+		try {
+			JFileChooser chooser = new JFileChooser();
+			   int status = chooser.showSaveDialog(null);
+			   
+			   File file = chooser.getSelectedFile();
+			   PrintWriter out = new PrintWriter(file);
+
+			   if (status == JFileChooser.APPROVE_OPTION){ 
+			      
+				   for(int i = 0; i < rules_auto.size(); i++){
+					   out.println(rules_auto.get(i).getName() + "	" + rules_auto.get(i).getValor());		           
 				   }
 			      out.close();
 			   }
