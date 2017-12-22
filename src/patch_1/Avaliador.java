@@ -1,5 +1,6 @@
 package patch_1;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Avaliador {
@@ -56,8 +57,10 @@ public class Avaliador {
 			String [] rules_present = log.get(i);
 			for (int j = 0; j < rules_present.length; j++) {
 				for (int j2 = 0; j2 < rules.size(); j2++) {
-					if(rules.get(j2).getName().equals(rules_present[j]))
+					if(rules.get(j2).getName().equals(rules_present[j])) {
 						k += rules.get(j2).getValor();
+						break;
+					}
 				}
 			}
 			if (k >= 5) 
