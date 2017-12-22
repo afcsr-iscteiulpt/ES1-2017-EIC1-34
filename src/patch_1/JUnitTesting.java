@@ -1,4 +1,4 @@
-
+package patch_1;
 
 import static org.junit.Assert.*;
 
@@ -26,31 +26,6 @@ import patch_1.Rule;
 import patch_1.Avaliador; 
 
 public class JUnitTesting {
-
-	@Test
-	public void avaliartesttrue() {
-		ArrayList<Rule> rules = File_Scanner.Scan_Rules_cf("teste_file.cf");
-		ArrayList<String[]> fileReport = File_Scanner.Scan_Spam_or_Ham("spam.log");
-		boolean spam = true;
-		Avaliador avaltest = new Avaliador(rules, fileReport, spam);
-		int output = avaltest.avaliar();
-		System.out.println("negative cima: " + avaltest.negative);
-		System.out.println("positive cima: " + avaltest.positive);
-			assertEquals(avaltest.negative, output);
-			
-	}
-	@Test
-	public void avaliartestfalse() {
-		ArrayList<Rule> rules = File_Scanner.Scan_Rules_cf("teste_file.cf");
-		ArrayList<String[]> fileReport = File_Scanner.Scan_Spam_or_Ham("spam.log");
-		boolean spam = false;
-		Avaliador avaltest = new Avaliador(rules, fileReport, spam);
-		int output = avaltest.avaliar();
-		System.out.println("negative baixo: " + avaltest.negative);
-		System.out.println("positive baixo: " + avaltest.positive);
-			assertEquals(avaltest.positive, output);	
-	}
-	
 
 	@Test
 	public void createRulesList_Test_NotNull(){
@@ -101,6 +76,7 @@ public class JUnitTesting {
 		c.gui.setRulespath("rules.cf");
 		c.gui.setTextField("rules.cf");
 		c.get_rules_list();
+		c.createRulesAuto();
 		ArrayList<Rule> rules = c.createRulesList();
 		c.change_peso(1, 0.1);
 		assertEquals(0.1, c.getRules_cf().get(1).getValor(), 0.0);
@@ -222,6 +198,26 @@ public class JUnitTesting {
 			e.printStackTrace();
 		}
 		c.start_AutoConfig();
+	}
+	
+	@Test
+	public void avaliar_test(){
+		
+		ArrayList<Rule> rules = File_Scanner.Scan_Rules_cf("rules.cf");
+		
+		Avaliador a = new Avaliador(rules, File_Scanner.Scan_Spam_or_Ham("spam.log"), true);
+		assertEquals(File_Scanner.Scan_Spam_or_Ham("spam.log").size(), a.avaliar());
+		
+	}
+		@Test
+		public void avalir_test_(){
+			ArrayList<Rule> rules = File_Scanner.Scan_Rules_cf("rules.cf");
+			Avaliador a = new Avaliador(rules, File_Scanner.Scan_Spam_or_Ham("spam.log"), true);
+		for (int i = 0; i < rules.size(); i++) {
+			rules.get(i).setValor(6);
+		}
+		a.replaceFields(rules, File_Scanner.Scan_Spam_or_Ham("ham.log"), false);
+		assertEquals(File_Scanner.Scan_Spam_or_Ham("ham.log").size(), a.avaliar());
 	}
 	
 }
