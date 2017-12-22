@@ -158,7 +158,7 @@ public class GUI{
 		JSeparator separator_1 = new JSeparator();
 		//--------------------------------------------------------------------------------
 
-		//AUTO
+		//AUTO 
 		
 		model2 = new DefaultListModel<>();
 		JScrollPane scrollPane_1 = new JScrollPane();
