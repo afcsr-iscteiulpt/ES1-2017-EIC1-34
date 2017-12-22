@@ -155,7 +155,7 @@ public class Cliente {
 					   out.println(rules_cf.get(i).getName() + "	" + rules_cf.get(i).getValor());		           
 				   }
 			      out.close();
-			   } 
+			   }  
 			
 		} catch (IOException e) {}
 	}
